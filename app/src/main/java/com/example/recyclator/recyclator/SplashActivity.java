@@ -11,13 +11,12 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        final Intent intent = new Intent(this, MainActivity.class);
+        final Intent intent = new Intent(this, CombanyOrUser.class);
         new Thread(new Runnable() {
             @Override
             public void run() {
 
                 try {
-
                     Thread.sleep(3000);
                     startActivity(intent);
 
