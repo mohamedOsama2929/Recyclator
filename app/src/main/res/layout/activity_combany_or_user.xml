@@ -7,40 +7,59 @@
     android:background="@drawable/back"
     tools:context="com.example.recyclator.recyclator.CombanyOrUser">
 
-    <ImageView
+
+    <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="175dp"
         android:layout_height="113dp"
-        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="208dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/company"
         android:scaleType="centerCrop"
-        android:src="@drawable/companyicon"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="189dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
+
+    <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="175dp"
         android:layout_height="113dp"
+        android:layout_marginBottom="208dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/user"
         android:scaleType="centerCrop"
-        android:src="@drawable/usericon"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
-        tools:layout_editor_absoluteY="189dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="225dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="120dp"
         android:fontFamily="@font/roboto_light"
         android:lines="2"
         android:text="You are using Recyclator \n                  as a ?"
         android:textColor="@color/cardview_light_background"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="121dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
