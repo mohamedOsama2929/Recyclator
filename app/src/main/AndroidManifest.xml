@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignInActivity"></activity>
-        <activity android:name=".CombanyOrUser"></activity>
+        <activity android:name=".CombanyOrUser" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            ></activity>
 
         <meta-data
             android:name="preloaded_fonts"
