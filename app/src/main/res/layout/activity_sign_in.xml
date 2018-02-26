@@ -22,12 +22,11 @@
         android:layout_width="247dp"
         android:layout_height="37dp"
         android:drawableBottom="@drawable/bar"
-        android:drawableRight="@drawable/pin"
+        android:drawableRight="@drawable/usernameicon"
         android:fontFamily="@font/roboto"
         android:gravity="center_vertical"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
-        android:text="Recyclator_User@gmail.com"
         android:textColor="#000c44"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,13 +51,12 @@
         android:layout_height="37dp"
         android:layout_marginTop="8dp"
         android:drawableBottom="@drawable/bar"
-        android:drawableRight="@drawable/pin"
+        android:drawableRight="@drawable/passwordsignup"
         android:gravity="center_vertical"
         android:inputType="textPassword"
         android:paddingLeft="2dp"
 
         android:paddingRight="2dp"
-        android:text="6th of October"
         android:textColor="#000c44"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -144,8 +142,7 @@
         app:layout_constraintEnd_toEndOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        tools:ignore="OnClick" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 
 </android.support.constraint.ConstraintLayout>
