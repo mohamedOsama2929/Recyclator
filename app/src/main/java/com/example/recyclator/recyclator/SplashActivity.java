@@ -1,7 +1,6 @@
 package com.example.recyclator.recyclator;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
