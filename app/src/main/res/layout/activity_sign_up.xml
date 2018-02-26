@@ -30,6 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+
     <TextView
         android:id="@+id/textVieww1"
         android:layout_width="wrap_content"
