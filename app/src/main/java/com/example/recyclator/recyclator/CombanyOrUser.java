@@ -9,40 +9,29 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class CombanyOrUser extends AppCompatActivity {
 
-    ImageButton userImage;
-    ImageButton companyImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_combany_or_user);
 
-        final Intent intent = new Intent(this, SetLocation.class);
-        final Intent intent1 = new Intent(this, SignInActivity.class);
-
-        userImage = (ImageButton) findViewById(R.id.userimageButton);
-
-        userImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent);
-            }
-        });
-        companyImage = (ImageButton) findViewById(R.id.companyimageButton);
-
-        companyImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent1);
-            }
-        });
-
-
-
-
+        ButterKnife.bind(this);
     }
+
+    @OnClick(R.id.userimageButton)
+    void goToSetLocationActivity() {
+        Intent intent = new Intent(this, SetLocation.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.companyimageButton)
+    void goToSignInActivity() {
+        Intent intent1 = new Intent(this, SignInActivity.class);
+        startActivity(intent1);
+    }
+
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SignInActivity extends AppCompatActivity {
@@ -16,18 +17,13 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        ButterKnife.bind(this);
 
-        TextView create = (TextView) findViewById(R.id.textView7);
+    }
 
-
-        create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),SignUp.class);
-                startActivity(i);
-            }
-        });
-
-
+    @OnClick(R.id.textView7)
+    void goToSignUp() {
+        Intent i = new Intent(getApplicationContext(), SignUp.class);
+        startActivity(i);
     }
 }
