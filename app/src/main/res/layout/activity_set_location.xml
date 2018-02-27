@@ -8,17 +8,17 @@
     tools:context="com.example.recyclator.recyclator.MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto"
         android:text="City"
         android:textColor="#e8e8e9"
-        app:layout_constraintBottom_toTopOf="@+id/txtMailEdit"
-        app:layout_constraintStart_toStartOf="@+id/txtMailEdit" />
+        app:layout_constraintBottom_toTopOf="@+id/txtCityEdit"
+        app:layout_constraintStart_toStartOf="@+id/txtCityEdit" />
 
     <TextView
-        android:id="@+id/txtMailEdit"
+        android:id="@+id/txtCityEdit"
         android:layout_width="247dp"
         android:layout_height="37dp"
         android:drawableBottom="@drawable/bar"
@@ -37,17 +37,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtPassword"
+        android:id="@+id/txtArea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto"
         android:text="Area"
         android:textColor="#e8e8e9"
-        app:layout_constraintBottom_toTopOf="@+id/txtPasswordEdit"
-        app:layout_constraintStart_toStartOf="@+id/txtPasswordEdit" />
+        app:layout_constraintBottom_toTopOf="@+id/txtAreaEdit"
+        app:layout_constraintStart_toStartOf="@+id/txtAreaEdit" />
 
     <TextView
-        android:id="@+id/txtPasswordEdit"
+        android:id="@+id/txtAreaEdit"
         android:layout_width="247dp"
         android:layout_height="37dp"
         android:layout_marginTop="8dp"
@@ -64,11 +64,11 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMailEdit"
+        app:layout_constraintTop_toBottomOf="@+id/txtCityEdit"
         app:layout_constraintVertical_bias="0.106" />
 
     <Button
-        android:id="@+id/btnSignin"
+        android:id="@+id/btnShowCompanies"
         android:layout_width="245dp"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
@@ -81,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPasswordEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/txtAreaEdit" />
 
     <ImageView
         android:id="@+id/imgLogo"
@@ -95,7 +95,7 @@
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/txtSignin"
+        android:id="@+id/txtSetLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
