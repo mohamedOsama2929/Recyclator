@@ -157,7 +157,7 @@
         app:layout_constraintBottom_toTopOf="@+id/txtSignup"
         app:layout_constraintStart_toStartOf="@+id/txtSignup" />
 
-    <Button
+    <info.hoang8f.widget.FButton
         android:id="@+id/btnSignin"
         android:layout_width="245dp"
         android:layout_height="47dp"
