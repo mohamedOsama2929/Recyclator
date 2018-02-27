@@ -19,7 +19,7 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.textView7)
+    @OnClick(R.id.txtSignup)
     void goToSignUp() {
         Intent i = new Intent(getApplicationContext(), SignUp.class);
         startActivity(i);
