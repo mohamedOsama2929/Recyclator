@@ -8,17 +8,17 @@
     tools:context="com.example.recyclator.recyclator.MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto"
         android:text="City"
         android:textColor="#e8e8e9"
-        app:layout_constraintBottom_toTopOf="@+id/txtMailEdit"
-        app:layout_constraintStart_toStartOf="@+id/txtMailEdit" />
+        app:layout_constraintBottom_toTopOf="@+id/txtCityEdit"
+        app:layout_constraintStart_toStartOf="@+id/txtCityEdit" />
 
     <TextView
-        android:id="@+id/txtMailEdit"
+        android:id="@+id/txtCityEdit"
         android:layout_width="247dp"
         android:layout_height="37dp"
         android:drawableBottom="@drawable/bar"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtPassword"
+        android:id="@+id/txtArea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto"
@@ -64,7 +64,7 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMailEdit"
+        app:layout_constraintTop_toBottomOf="@+id/txtCityEdit"
         app:layout_constraintVertical_bias="0.106" />
 
     <info.hoang8f.widget.FButton
