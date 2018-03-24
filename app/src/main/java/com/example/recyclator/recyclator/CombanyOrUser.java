@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 
+import com.example.recyclator.recyclator.setLocation.SetLocationActivity;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -20,7 +22,7 @@ public class CombanyOrUser extends AppCompatActivity {
 
     @OnClick(R.id.userimageButton)
     void goToSetLocationActivity() {
-        Intent intent = new Intent(this, SetLocation.class);
+        Intent intent = new Intent(this, SetLocationActivity.class);
         startActivity(intent);
     }
 

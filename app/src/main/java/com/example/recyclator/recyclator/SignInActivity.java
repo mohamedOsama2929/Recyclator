@@ -23,4 +23,9 @@ public class SignInActivity extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), SignUp.class);
         startActivity(i);
     }
+    @OnClick(R.id.btnSignin)
+    void goTOMap(){
+        Intent i = new Intent(getApplicationContext(), MapsActivity.class);
+        startActivity(i);
+    }
 }
