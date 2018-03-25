@@ -3,9 +3,12 @@ package com.example.recyclator.recyclator.setLocation;
 /**
  * Created by osos on 3/20/18.
  */
+
 import android.content.Context;
 
-import com.example.recyclator.recyclator.setLocation.ISetLocationContract.*;
+import com.example.recyclator.recyclator.setLocation.ISetLocationContract.ISetLocationModel;
+import com.example.recyclator.recyclator.setLocation.ISetLocationContract.ISetLocationView;
+import com.example.recyclator.recyclator.setLocation.ISetLocationContract.ISetlocationPresenter;
 
 public class SetLocationPresenter implements ISetlocationPresenter
         ,ISetLocationModel.ILocationListner
@@ -19,14 +22,14 @@ public class SetLocationPresenter implements ISetlocationPresenter
 
       this.mSetLocationView=mSetLocationView;
       mSetLocationModel=new SetLocationModel();
-      mSetLocationModel.checkLocationPermission(context,this);
+      //mSetLocationModel.checkLocationPermission(context,this);
 
     }
     @Override
     public void requestLocationData(Context context) {
 
         mSetLocationModel.checkLocationPermission(context,this);
-        mSetLocationModel.checkGPSEnable(context,this);
+      //  mSetLocationModel.checkGPSEnable(context,this);
         mSetLocationModel.getLocationData(context,this);
     }
 
@@ -53,7 +56,7 @@ public class SetLocationPresenter implements ISetlocationPresenter
     @Override
     public void gpsDialogCanel(Context context) {
 
-        mSetLocationModel.checkGPSEnable(context,this);
+       // mSetLocationModel.checkGPSEnable(context,this);
 
     }
 

@@ -4,26 +4,25 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.recyclator.recyclator.R;
+import com.example.recyclator.recyclator.setLocation.ISetLocationContract.ISetLocationView;
+import com.example.recyclator.recyclator.setLocation.ISetLocationContract.ISetlocationPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import com.example.recyclator.recyclator.setLocation.ISetLocationContract.*;
 
 
 public class SetLocationActivity extends AppCompatActivity implements ISetLocationView {
@@ -48,6 +47,8 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
         setContentView(R.layout.activity_set_location);
         ButterKnife.bind(this);
 
+        Log.i("loc", "onCreate: ");
+
         msetlocationPresenter=new SetLocationPresenter(this,this);
 
       //  msetlocationPresenter.requestLocationData(this);
@@ -65,9 +66,10 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //must at presenter
+                        hideGPSAlert();
                         Intent callGPSSettingIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                         startActivity(callGPSSettingIntent);
-                        hideGPSAlert();
+
                       //  msetlocationPresenter.gpsDialogClick(getApplicationContext());
 
 
@@ -77,9 +79,9 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+                dialog.cancel();
                 hideGPSAlert();
                 msetlocationPresenter.gpsDialogCanel(getApplicationContext());
-
 
             }
         });
@@ -94,7 +96,11 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
         buildGPSAlert();
         alertDialog = alertDialogBuilder.create();
 
-        alertDialog.show();
+        if (!alertDialog.isShowing()){
+            Log.i("loc", "showGPSAlert: alertDialog.isShowing ");
+            alertDialog.show();
+        }
+
 
     }
 
@@ -104,6 +110,7 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
         buildGPSAlert();
         alertDialog = alertDialogBuilder.create();
         if (alertDialog.isShowing()){
+            Log.i("loc", "hideGPSAlert: dialog is showing ");
             alertDialog.cancel();
             alertDialog.hide();
         }

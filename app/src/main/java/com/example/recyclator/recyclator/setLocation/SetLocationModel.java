@@ -3,6 +3,7 @@ package com.example.recyclator.recyclator.setLocation;
 /**
  * Created by osos on 3/20/18.
  */
+
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -14,10 +15,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.recyclator.recyclator.setLocation.ISetLocationContract.*;
-import com.google.android.gms.tasks.Task;
+import com.example.recyclator.recyclator.setLocation.ISetLocationContract.ISetLocationModel;
 
 import java.io.IOException;
 import java.util.List;
@@ -137,6 +136,8 @@ public class SetLocationModel implements ISetLocationModel{
             });
 
 
+            if (location!=null){
+
                 double lat = location.getLatitude();
                 double lng = location.getLongitude();
 
@@ -145,12 +146,12 @@ public class SetLocationModel implements ISetLocationModel{
                     List<Address> addressList = geocoder.getFromLocation(lat, lng, 1);
                     if (addressList != null && addressList.size() > 0) {
                         String address=addressList.get(0).toString();
-                       // Log.i("loc", address);
+                        // Log.i("loc", address);
                         Pattern pattern=Pattern.compile("0:\"(.*?)\"");
                         Matcher matcher=pattern.matcher(address);
 
                         while (matcher.find()){
-                           String addr=matcher.group(1);
+                            String addr=matcher.group(1);
                             String[]add=addr.split(",");
 
                             Log.i("loc",add[2]);
@@ -167,6 +168,9 @@ public class SetLocationModel implements ISetLocationModel{
 
                     listner.onFailure();
                 }
+
+
+            }
 
 
         } else {
