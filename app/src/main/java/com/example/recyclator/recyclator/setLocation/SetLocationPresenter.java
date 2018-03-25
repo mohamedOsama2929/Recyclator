@@ -29,8 +29,8 @@ public class SetLocationPresenter implements ISetlocationPresenter
     public void requestLocationData(Context context) {
 
         mSetLocationModel.checkLocationPermission(context,this);
-      //  mSetLocationModel.checkGPSEnable(context,this);
-        mSetLocationModel.getLocationData(context,this);
+        //  mSetLocationModel.checkGPSEnable(context,this);
+        //  mSetLocationModel.getLocationData(context,this);
     }
 
     @Override
@@ -42,14 +42,14 @@ public class SetLocationPresenter implements ISetlocationPresenter
     @Override
     public void setPermisionOk(Context context) {
 
-        mSetLocationModel.checkGPSEnable(context,this);
+        mSetLocationModel.checkGPSEnable(context, this, this);
 
     }
 
     @Override
     public void gpsDialogClick(Context context) {
 
-        mSetLocationModel.checkGPSEnable(context,this);
+        mSetLocationModel.checkGPSEnable(context, this, this);
 
     }
 
@@ -70,52 +70,63 @@ public class SetLocationPresenter implements ISetlocationPresenter
     }
 
     @Override
-    public void onSuccess(String city,String area) {
+    public void onSuccess(String city, String area) {
+        if (mSetLocationView != null) {
 
-        mSetLocationView.hidePrgrassBar();
-        mSetLocationView.setLocationData(city,area);
+            mSetLocationView.hidePrgrassBar();
+            mSetLocationView.setLocationData(city, area);
+        }
+
     }
 
     @Override
     public void noLocationData() {
-
-        mSetLocationView.hidePrgrassBar();
-        mSetLocationView.errorLocationNotFound();
+        if (mSetLocationView != null) {
+            mSetLocationView.hidePrgrassBar();
+            mSetLocationView.errorLocationNotFound();
+        }
     }
 
     @Override
     public void onFailure() {
+        if (mSetLocationView != null) {
+            mSetLocationView.hidePrgrassBar();
+            mSetLocationView.errorLocationNotFound();
 
-        mSetLocationView.hidePrgrassBar();
-        mSetLocationView.errorLocationNotFound();
+        }
     }
 
     @Override
     public void permissonAccept(Context context) {
 
-       mSetLocationModel.checkGPSEnable(context,this);
+        mSetLocationModel.checkGPSEnable(context, this, this);
     }
 
     @Override
     public void permissionDeny(Context context) {
-
-        mSetLocationView.showPermissionDialog();
+        if (mSetLocationView != null) {
+            mSetLocationView.showPermissionDialog();
+        }
 
     }
 
     @Override
     public void gpsProvided(Context context) {
+        if (mSetLocationView != null) {
 
-        mSetLocationView.hideGPSAlert();
-        mSetLocationView.showPrgrassBar();
-        mSetLocationModel.getLocationData(context,this);
+            mSetLocationView.hideGPSAlert();
+            mSetLocationView.showPrgrassBar();
+            mSetLocationModel.getLocationData(context, this);
+        }
 
     }
 
     @Override
     public void gpsNotPrvided(Context context) {
+        if (mSetLocationView != null) {
 
-        mSetLocationView.showGPSAlert();
+            mSetLocationView.showGPSAlert();
+        }
 
 
 

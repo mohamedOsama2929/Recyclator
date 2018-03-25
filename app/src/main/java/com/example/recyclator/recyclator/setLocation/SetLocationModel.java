@@ -51,19 +51,23 @@ public class SetLocationModel implements ISetLocationModel{
     }
 
     @Override
-    public void checkGPSEnable(Context context, IGPSListner listner) {
+    public void checkGPSEnable(Context context, IGPSListner listner, ILocationListner locationListner) {
 
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
-            listner.gpsProvided(context);
-
             Log.i("loc", "checkGPSEnable: GPS Provided ");
+            listner.gpsProvided(context);
+            getLocationData(context, locationListner);
+
+
             // gpsEnabled = true;
         } else {
 
-            listner.gpsNotPrvided(context);
             Log.i("loc", "checkGPSEnable: GPS Not Provided ");
+
+            listner.gpsNotPrvided(context);
+
            // gpsEnabled = false;
         }
     }
@@ -71,19 +75,23 @@ public class SetLocationModel implements ISetLocationModel{
     @Override
     public void getLocationData(final Context context, final ILocationListner listner) {
 
+
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && ContextCompat.checkSelfPermission(context,
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
 
+            Log.i("loc", "getLocationData: gps and permission malk4 7ega ya 3rs  ");
+
             locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-            provider = locationManager.getBestProvider(new Criteria(), false);
+            provider = locationManager.getBestProvider(new Criteria(), true);
             Log.i("loc", "provider :" + provider);
 
             location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
-            locationManager.requestLocationUpdates(provider, 400, 1, new LocationListener() {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 400, 1, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
+                    Log.i("loc", "onLocationChanged:  request location");
 
                     locationManager.removeUpdates(this);
                     double lat = location.getLatitude();
@@ -170,6 +178,9 @@ public class SetLocationModel implements ISetLocationModel{
                 }
 
 
+            } else {
+
+                // location = null
             }
 
 

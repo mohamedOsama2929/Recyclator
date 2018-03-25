@@ -37,7 +37,7 @@ public interface ISetLocationContract {
 
          void checkLocationPermission(Context context,IPermissonListner listner);
 
-         void checkGPSEnable(Context context,IGPSListner listner);
+        void checkGPSEnable(Context context, IGPSListner listner, ILocationListner locationListner);
 
          void getLocationData(Context context,ILocationListner listner);
 

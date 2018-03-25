@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.recyclator.recyclator.R;
 import com.example.recyclator.recyclator.setLocation.ISetLocationContract.ISetLocationView;
@@ -51,7 +50,8 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
 
         msetlocationPresenter=new SetLocationPresenter(this,this);
 
-      //  msetlocationPresenter.requestLocationData(this);
+        buildGPSAlert();
+        // msetlocationPresenter.requestLocationData(this);
 
     }
 
@@ -67,6 +67,7 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
                     public void onClick(DialogInterface dialog, int which) {
                         //must at presenter
                         hideGPSAlert();
+                        dialog.cancel();
                         Intent callGPSSettingIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                         startActivity(callGPSSettingIntent);
 
@@ -92,22 +93,17 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
     public void showGPSAlert() {
 
         //Toast.makeText(this, "make GPS Enabled Please ", Toast.LENGTH_SHORT).show();
-
-        buildGPSAlert();
         alertDialog = alertDialogBuilder.create();
-
         if (!alertDialog.isShowing()){
-            Log.i("loc", "showGPSAlert: alertDialog.isShowing ");
+            Log.i("loc", "showGPSAlert: alertDialog.isHidden ");
             alertDialog.show();
         }
-
 
     }
 
     @Override
     public void hideGPSAlert() {
 
-        buildGPSAlert();
         alertDialog = alertDialogBuilder.create();
         if (alertDialog.isShowing()){
             Log.i("loc", "hideGPSAlert: dialog is showing ");
@@ -125,7 +121,6 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
                 new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                 1);
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[],
@@ -152,19 +147,25 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
 
     @Override
     public void showPrgrassBar() {
+        if (!progressBar.isShown()) {
+            Log.i("loc", "showPrgrassBar:  progressBar hiden ");
+            progressBar.setVisibility(View.VISIBLE);
+        }
 
-        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hidePrgrassBar() {
 
-        progressBar.setVisibility(View.GONE);
+        if (progressBar.isShown()) {
+            Log.i("loc", "hidePrgrassBar: progressBar shown  ");
+            progressBar.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
     public void setLocationData(String city, String area) {
-
 
             txtCity.setText(city);
             txtArea.setText(area);
@@ -175,12 +176,12 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
     @Override
     public void requestNavigateToCompanies() {
 
-
     }
 
     @Override
     public void errorLocationNotFound() {
-        Toast.makeText(this, "Location Not Found", Toast.LENGTH_SHORT).show();
+
+        //  Toast.makeText(this, "Location Not Found", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -191,8 +192,6 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
         Log.i("loc", "onResume:  ");
 
         msetlocationPresenter.requestLocationData(this);
-
-
 
     }
 
