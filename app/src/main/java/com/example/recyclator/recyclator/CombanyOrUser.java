@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 
 import com.example.recyclator.recyclator.setLocation.SetLocationActivity;
+import com.example.recyclator.recyclator.signIn.SignInActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
