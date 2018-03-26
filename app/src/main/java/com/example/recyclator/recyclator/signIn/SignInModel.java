@@ -2,6 +2,9 @@ package com.example.recyclator.recyclator.signIn;
 
 import android.text.TextUtils;
 
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
+
 /**
  * Created by amr on 3/26/18.
  */
