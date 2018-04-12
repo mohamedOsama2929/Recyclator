@@ -19,6 +19,7 @@
 
     <EditText
         android:id="@+id/txtMailEdit"
+        android:inputType="textEmailAddress"
         android:layout_width="247dp"
         android:layout_height="37dp"
         android:drawableRight="@drawable/usernameicon"

@@ -24,6 +24,7 @@ import android.util.Log;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.Toast;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import com.akexorcist.googledirection.DirectionCallback;
 import com.akexorcist.googledirection.GoogleDirection;
@@ -258,9 +259,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             location = locationManager.getLastKnownLocation(provider);
             if (location != null) {
-                Toast.makeText(getApplicationContext(), "mLastKnownLocation", Toast.LENGTH_LONG).show();
+                StyleableToast.makeText(getApplicationContext(), "mLastKnownLocation", Toast.LENGTH_LONG, R.style.mytoast).show();
             } else {
-                Toast.makeText(getApplicationContext(), "no mLastKnownLocation", Toast.LENGTH_LONG).show();
+                StyleableToast.makeText(getApplicationContext(), "no mLastKnownLocation", Toast.LENGTH_LONG, R.style.mytoast).show();
 
             }
             if (location != null) {
@@ -282,7 +283,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         assert locationManager != null;
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            Toast.makeText(this, "GPS is Enabled in your Device", Toast.LENGTH_SHORT).show();
+            StyleableToast.makeText(this, "GPS is Enabled in your Device", Toast.LENGTH_SHORT, R.style.mytoast).show();
         } else {
             showGpsDisabledAlertToUser();
         }

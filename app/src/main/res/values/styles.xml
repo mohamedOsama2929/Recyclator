@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="mytoast">
+        <item name="textBold">true</item>
+        <item name="textColor">#2AA8FF</item>
+        <item name="textSize">15sp</item>
+        <item name="colorBackground">#fff</item>
+    </style>
+
 </resources>

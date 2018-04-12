@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 
 import com.example.recyclator.recyclator.MapsActivity;
@@ -67,7 +68,7 @@ public class SignInActivity extends AppCompatActivity implements ISignInContract
 
     @Override
     public void showAlert(String message) {
-        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
+        StyleableToast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT,R.style.mytoast).show();
     }
 
     @Override
