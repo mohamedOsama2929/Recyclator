@@ -35,11 +35,11 @@ public interface ISetLocationContract {
 
     interface ISetLocationModel{
 
-         void checkLocationPermission(Context context,IPermissonListner listner);
+        void checkLocationPermission(Context context, IPermissonListner permissonListner);
 
-        void checkGPSEnable(Context context, IGPSListner listner, ILocationListner locationListner);
+        void checkGPSEnable(Context context, IGPSListner gpsListner, ILocationListner locationListner);
 
-         void getLocationData(Context context,ILocationListner listner);
+        void getLocationData(Context context, ILocationListner locationListner);
 
 
         interface IPermissonListner{

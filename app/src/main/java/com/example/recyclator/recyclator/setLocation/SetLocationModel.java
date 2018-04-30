@@ -31,25 +31,26 @@ public class SetLocationModel implements ISetLocationModel{
     Location location;
 
 
+    //this method check the location permission and send the response to the permissonListner
     @Override
-    public void checkLocationPermission(Context context, IPermissonListner listner) {
+    public void checkLocationPermission(Context context, IPermissonListner permissonListner) {
 
         if (ContextCompat.checkSelfPermission(context,
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             Log.i("loc", "getLocationPermission:  permisssion exist ");
 
-            listner.permissonAccept(context);
-
+            permissonListner.permissonAccept(context);
 
         } else {
 
-            listner.permissionDeny(context);
+            permissonListner.permissionDeny(context);
 
         }
 
     }
 
+    //check GPS if it enable or not
     @Override
     public void checkGPSEnable(Context context, IGPSListner listner, ILocationListner locationListner) {
 
@@ -58,85 +59,96 @@ public class SetLocationModel implements ISetLocationModel{
 
             Log.i("loc", "checkGPSEnable: GPS Provided ");
             listner.gpsProvided(context);
-            getLocationData(context, locationListner);
+            getLocationData(context, locationListner); //go to method get location and get the location information
 
-
-            // gpsEnabled = true;
         } else {
 
             Log.i("loc", "checkGPSEnable: GPS Not Provided ");
-
             listner.gpsNotPrvided(context);
-
-           // gpsEnabled = false;
         }
     }
 
+    //method that get location information and send it to location listner
     @Override
-    public void getLocationData(final Context context, final ILocationListner listner) {
-
+    public void getLocationData(final Context context, final ILocationListner locationListner) {
 
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && ContextCompat.checkSelfPermission(context,
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
 
-            Log.i("loc", "getLocationData: gps and permission malk4 7ega ya 3rs  ");
+            Log.i("loc", "getLocationData: gps and permission malk4 7ega ");
 
             locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
             provider = locationManager.getBestProvider(new Criteria(), true);
             Log.i("loc", "provider :" + provider);
 
+            //use network provider instead of GPS provider
             location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 400, 1, new LocationListener() {
+                //when location changed it is not nessesary at my code but it only for no bug
+                //it to make location not null
                 @Override
                 public void onLocationChanged(Location location) {
                     Log.i("loc", "onLocationChanged:  request location");
 
                     locationManager.removeUpdates(this);
+                    //this is the code that get location information
                     double lat = location.getLatitude();
                     double lng = location.getLongitude();
+
+                    //that get location indormation (city=add[2],area=add[1])
                     Geocoder geocoder = new Geocoder(context, Locale.getDefault());
                     try {
                         List<Address> addressList = geocoder.getFromLocation(lat, lng, 1);
                         if (addressList != null && addressList.size() > 0) {
                             String address=addressList.get(0).toString();
-                            // Log.i("loc", address);
+                            Log.i("loc", address);
+                             /*
+                              Address[addressLines=[0:"El-Hag Mahmoud, Al Mahalah Al Kubra (Part 2), Al Mahalah Al Kubra, Gharbia Governorate, Egypt"]
+                             ,feature=El-Hag Mahmoud,admin=Gharbia Governorate,sub-admin=Al Mahalah Al Kubra,locality=Al Mahalah Al Kubra (Part 2)
+                             ,thoroughfare=El-Hag Mahmoud,postalCode=null,countryCode=EG,countryName=Egypt,hasLatitude=true,latitude=30.949367100000003,hasLongitude=true,longitude=31.158021,
+                             phone=null,url=null,extras=null]
+                            */
+                            //this code for splite the address and get city and area only
                             Pattern pattern=Pattern.compile("0:\"(.*?)\"");
                             Matcher matcher=pattern.matcher(address);
 
                             while (matcher.find()){
                                 String addr=matcher.group(1);
                                 String[]add=addr.split(",");
-
                                 Log.i("loc",add[2]);
-
-                                listner.onSuccess(add[2], add[1]);
+                                //(city=add[2],area=add[1])
+                                locationListner.onSuccess(add[2], add[1]);
                             }
 
                         } else {
 
-                            listner.noLocationData();
+                            //address =null (No Address)
+                            locationListner.noLocationData();
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
 
-                        listner.onFailure();
+                        locationListner.onFailure();
                     }
 
 
                 }
 
+                //not used
                 @Override
                 public void onStatusChanged(String provider, int status, Bundle extras) {
 
                 }
 
+                //not used
                 @Override
                 public void onProviderEnabled(String provider) {
 
                 }
 
+                //not used
                 @Override
                 public void onProviderDisabled(String provider) {
 
@@ -144,6 +156,8 @@ public class SetLocationModel implements ISetLocationModel{
             });
 
 
+            /*
+            //code that get location information but id it do not change at this moment
             if (location!=null){
 
                 double lat = location.getLatitude();
@@ -154,7 +168,15 @@ public class SetLocationModel implements ISetLocationModel{
                     List<Address> addressList = geocoder.getFromLocation(lat, lng, 1);
                     if (addressList != null && addressList.size() > 0) {
                         String address=addressList.get(0).toString();
-                        // Log.i("loc", address);
+
+                         //Log.i("loc", address);
+                         //Address[addressLines=[0:"El-Hag Mahmoud, Al Mahalah Al Kubra (Part 2), Al Mahalah Al Kubra, Gharbia Governorate, Egypt"]
+                         //,feature=El-Hag Mahmoud,admin=Gharbia Governorate,sub-admin=Al Mahalah Al Kubra,locality=Al Mahalah Al Kubra (Part 2)
+                         //,thoroughfare=El-Hag Mahmoud,postalCode=null,countryCode=EG,countryName=Egypt
+                         //,hasLatitude=true,latitude=30.949367100000003,hasLongitude=true,longitude=31.158021,
+                        // phone=null,url=null,extras=null]
+
+                        //this code for splite the address and get city and area only
                         Pattern pattern=Pattern.compile("0:\"(.*?)\"");
                         Matcher matcher=pattern.matcher(address);
 
@@ -164,29 +186,27 @@ public class SetLocationModel implements ISetLocationModel{
 
                             Log.i("loc",add[2]);
 
-                            listner.onSuccess(add[2], add[1]);
+                            //(city=add[2],area=add[1])
+                            locationListner.onSuccess(add[2], add[1]);
                         }
 
                     } else {
 
-                        listner.noLocationData();
+                        //address =null (No Address)
+                        locationListner.noLocationData();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
 
-                    listner.onFailure();
+                    locationListner.onFailure();
                 }
 
-
-            } else {
-
-                // location = null
             }
+            */
 
 
         } else {
-
-            listner.onFailure();
+            locationListner.onFailure();
             //gps not enable
 
         }

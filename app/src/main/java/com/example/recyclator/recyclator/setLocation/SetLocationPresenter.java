@@ -25,12 +25,14 @@ public class SetLocationPresenter implements ISetlocationPresenter
       //mSetLocationModel.checkLocationPermission(context,this);
 
     }
+
+    //this method check location permission and id it exist it automaticly by permission Listner
+    // go to method check GPS
+    //and if GPS provided it automaticly by GPS listner get location data
     @Override
     public void requestLocationData(Context context) {
 
         mSetLocationModel.checkLocationPermission(context,this);
-        //  mSetLocationModel.checkGPSEnable(context,this);
-        //  mSetLocationModel.getLocationData(context,this);
     }
 
     @Override
@@ -49,7 +51,7 @@ public class SetLocationPresenter implements ISetlocationPresenter
     @Override
     public void gpsDialogClick(Context context) {
 
-        mSetLocationModel.checkGPSEnable(context, this, this);
+        //mSetLocationModel.checkGPSEnable(context, this, this);
 
     }
 
@@ -91,6 +93,7 @@ public class SetLocationPresenter implements ISetlocationPresenter
     public void onFailure() {
         if (mSetLocationView != null) {
             mSetLocationView.hidePrgrassBar();
+
             mSetLocationView.errorLocationNotFound();
 
         }

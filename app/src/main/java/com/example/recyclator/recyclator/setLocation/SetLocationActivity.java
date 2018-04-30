@@ -14,7 +14,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.recyclator.recyclator.MainActivity;
 import com.example.recyclator.recyclator.R;
 import com.example.recyclator.recyclator.setLocation.ISetLocationContract.ISetLocationView;
 import com.example.recyclator.recyclator.setLocation.ISetLocationContract.ISetlocationPresenter;
@@ -54,7 +56,6 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
         // msetlocationPresenter.requestLocationData(this);
 
     }
-
 
     @Override
     public void buildGPSAlert() {
@@ -176,12 +177,13 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
     @Override
     public void requestNavigateToCompanies() {
 
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override
     public void errorLocationNotFound() {
 
-        //  Toast.makeText(this, "Location Not Found", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Location Not Found", Toast.LENGTH_SHORT).show();
 
     }
 

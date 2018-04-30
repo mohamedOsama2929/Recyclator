@@ -24,7 +24,6 @@ import android.util.Log;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.Toast;
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import com.akexorcist.googledirection.DirectionCallback;
 import com.akexorcist.googledirection.GoogleDirection;
@@ -40,6 +39,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import java.util.ArrayList;
 
@@ -315,7 +315,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         GoogleDirection.withServerKey(getResources().getString(R.string.google_maps_key))
                 .from(new LatLng(lat, lng))
-                .to(new LatLng(31.0433846, 31.3860779))
+                .to(new LatLng(31.042282, 31.352055))
                 .avoid(AvoidType.FERRIES)
                 .avoid(AvoidType.HIGHWAYS)
                 .execute(new DirectionCallback() {

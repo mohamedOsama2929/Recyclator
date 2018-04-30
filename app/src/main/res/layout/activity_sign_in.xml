@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto"
-        android:text="mail"
+        android:text="E-mail"
         android:textColor="#e8e8e9"
         app:layout_constraintBottom_toTopOf="@+id/txtMailEdit"
         app:layout_constraintStart_toStartOf="@+id/txtMailEdit" />
