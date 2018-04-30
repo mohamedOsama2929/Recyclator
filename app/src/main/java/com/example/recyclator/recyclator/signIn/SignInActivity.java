@@ -1,19 +1,18 @@
 package com.example.recyclator.recyclator.signIn;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
-
 
 import com.example.recyclator.recyclator.MapsActivity;
 import com.example.recyclator.recyclator.R;
-import com.example.recyclator.recyclator.SignUp;
+import com.example.recyclator.recyclator.SignUp.SignUpActivity;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -82,7 +81,7 @@ public class SignInActivity extends AppCompatActivity implements ISignInContract
 
     @OnClick(R.id.txtSignup)
     void goToSignUp() {
-        Intent i = new Intent(getApplicationContext(), SignUp.class);
+        Intent i = new Intent(getApplicationContext(), SignUpActivity.class);
         startActivity(i);
     }
 
