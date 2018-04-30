@@ -32,7 +32,6 @@
 
                 />
 
-
         </android.support.v7.widget.Toolbar>
 
         <RelativeLayout
@@ -87,9 +86,12 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="366dp"
             android:layout_below="@+id/relative"
             android:layout_marginTop="15dp"
-            android:drawSelectorOnTop="true"></android.support.v7.widget.RecyclerView>
+            android:drawSelectorOnTop="true"
+            android:scrollbarStyle="outsideOverlay">
+
+        </android.support.v7.widget.RecyclerView>
     </RelativeLayout>
 </FrameLayout>
