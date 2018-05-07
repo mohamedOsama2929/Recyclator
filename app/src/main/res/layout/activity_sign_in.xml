@@ -19,12 +19,12 @@
 
     <EditText
         android:id="@+id/txtMailEdit"
-        android:inputType="textEmailAddress"
         android:layout_width="247dp"
-        android:layout_height="37dp"
+        android:layout_height="31dp"
         android:drawableRight="@drawable/usernameicon"
         android:fontFamily="@font/roboto"
         android:gravity="center_vertical"
+        android:inputType="textEmailAddress"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
         android:textColor="#000c44"

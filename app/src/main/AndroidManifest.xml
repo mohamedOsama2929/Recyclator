@@ -27,7 +27,7 @@
         </activity>
         <activity android:name=".SignUp.SignUpActivity" />
         <activity android:name=".signIn.SignInActivity" />
-        <activity android:name=".CombanyOrUser">
+        <activity android:name=".CombanyOrUserActivity">
             ></activity>
 
         <meta-data
@@ -50,7 +50,17 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".HistoryActivity"
+            android:theme="@style/ToolBarTheme"></activity>
+        <activity android:name=".RequestActivity" />
+        <activity android:name=".CompanyProfileActivity" />
+        <activity android:name=".UserProfileActivity">
+
+        </activity>
+        <activity android:name=".placepicActvity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".uploadTrashActivity" />
     </application>
 
 

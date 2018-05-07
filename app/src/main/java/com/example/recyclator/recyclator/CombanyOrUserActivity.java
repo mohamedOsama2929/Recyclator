@@ -1,9 +1,8 @@
 package com.example.recyclator.recyclator;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.recyclator.recyclator.setLocation.SetLocationActivity;
 import com.example.recyclator.recyclator.signIn.SignInActivity;
@@ -11,7 +10,7 @@ import com.example.recyclator.recyclator.signIn.SignInActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CombanyOrUser extends AppCompatActivity {
+public class CombanyOrUserActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

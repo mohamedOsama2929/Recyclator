@@ -29,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
                     FragmentManager manager = getSupportFragmentManager();
                     manager.beginTransaction().replace(R.id.content, new HomeFragment()).commit();
                     return true;
+                case R.id.history:
+                    switchToFragment2();
+                    FragmentManager manager1 = getSupportFragmentManager();
+                    manager1.beginTransaction().replace(R.id.content, new HistoryFragment()).commit();
+                    return true;
             }
             return false;
         }
@@ -40,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         t2 = (TextView) findViewById(R.id.addrec);
+
+
         ButterKnife.bind(this);
 
        /* Typeface tf=Typeface.createFromAsset(getAssets(),"Roboto-Light_1.ttf");
@@ -56,5 +63,11 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.content, new optionFragment()).commit();
     }
+
+    public void switchToFragment2() {
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.content, new HistoryFragment()).commit();
+    }
+
 
 }

@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.recyclator.recyclator.R;
-import com.example.recyclator.recyclator.placepic;
+import com.example.recyclator.recyclator.placepicActvity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -41,7 +41,7 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpContract
         // mSignUpPresenter.validateCred(txtCompanyNameEdit.getText().toString().trim(),
         //       txtPasswordEdit.getText().toString().trim(),txtMailEdit.getText().toString().trim(),
         //     txtPhoneNumberEdit.getText().toString().trim(),txtLocationEdit.getText().toString().trim());
-        Intent i = new Intent(getApplicationContext(), placepic.class);
+        Intent i = new Intent(getApplicationContext(), placepicActvity.class);
         startActivity(i);
     }
 

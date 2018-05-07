@@ -315,7 +315,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         GoogleDirection.withServerKey(getResources().getString(R.string.google_maps_key))
                 .from(new LatLng(lat, lng))
-                .to(new LatLng(31.042282, 31.352055))
+                .to(new LatLng(31.0427018, 31.3594343))
                 .avoid(AvoidType.FERRIES)
                 .avoid(AvoidType.HIGHWAYS)
                 .execute(new DirectionCallback() {

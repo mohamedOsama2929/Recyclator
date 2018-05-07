@@ -70,6 +70,7 @@
                     android:paddingLeft="30dp">
 
                     <ImageView
+                        android:id="@+id/profielImage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:scaleType="centerCrop"
