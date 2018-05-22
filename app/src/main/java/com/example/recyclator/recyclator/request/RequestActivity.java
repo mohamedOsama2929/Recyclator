@@ -28,7 +28,6 @@ public class RequestActivity extends AppCompatActivity implements IRequestContra
     RecyclerView recyclerView;
     @BindView(R.id.progressBarRequest)
     ProgressBar ProgressBarRequest;
-
     //private RecyclerView recyclerView;
     //private RequestAdapter requestAdapter;
     //private ArrayList<Request> requests;
