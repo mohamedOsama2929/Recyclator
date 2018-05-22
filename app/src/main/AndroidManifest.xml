@@ -53,7 +53,7 @@
         <activity
             android:name=".HistoryActivity"
             android:theme="@style/ToolBarTheme"></activity>
-        <activity android:name=".RequestActivity" />
+        <activity android:name=".request.RequestActivity" />
         <activity android:name=".CompanyProfileActivity" />
         <activity android:name=".UserProfileActivity">
 

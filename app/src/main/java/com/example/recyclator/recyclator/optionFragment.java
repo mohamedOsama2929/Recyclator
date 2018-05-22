@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.recyclator.recyclator.request.RequestActivity;
+
 
 /**
  * A simple {@link Fragment} subclass.
