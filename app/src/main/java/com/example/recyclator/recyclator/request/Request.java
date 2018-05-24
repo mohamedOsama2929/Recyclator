@@ -1,4 +1,6 @@
-package com.example.recyclator.recyclator;
+package com.example.recyclator.recyclator.request;
+
+import android.content.Context;
 
 public class Request {
     String name;
