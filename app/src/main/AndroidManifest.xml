@@ -54,8 +54,8 @@
             android:name=".HistoryActivity"
             android:theme="@style/ToolBarTheme"></activity>
         <activity android:name=".RequestActivity" />
-        <activity android:name=".CompanyProfileActivity" />
-        <activity android:name=".UserProfileActivity">
+        <activity android:name=".companyprofile.CompanyProfileActivity" />
+        <activity android:name=".userprofile.UserProfileActivity">
 
         </activity>
         <activity android:name=".placepicActvity" />

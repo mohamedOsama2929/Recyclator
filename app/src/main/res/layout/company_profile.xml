@@ -130,6 +130,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/coemail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
@@ -168,6 +169,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/conumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
@@ -204,6 +206,7 @@
                 android:textSize="15sp" />
 
             <RatingBar
+                android:id="@+id/rate"
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -243,6 +246,7 @@
 
 
             <TextView
+                android:id="@+id/paymentmethod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -284,6 +288,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/coquantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"

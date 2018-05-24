@@ -25,6 +25,7 @@ public interface ISignUpContract {
 
     interface IsignUpPresenter {
         void validateCred(String username, String password, String email, String phone, String location);
+        void onDestroy();
 
     }
 

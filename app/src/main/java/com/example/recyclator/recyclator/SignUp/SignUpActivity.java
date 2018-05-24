@@ -90,10 +90,18 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpContract
     public void setSucsses() {
 
     }
-
-
     @Override
     public void showAlert(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        super.onDestroy();
+
+        mSignUpPresenter.onDestroy();
+    }
+
+
 }

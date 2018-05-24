@@ -49,7 +49,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="Fathy Shawat"
         android:textColor="#081a56"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -62,7 +61,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:paddingTop="5dp"
-        android:text="maddi , cairo , Egypt "
         android:textColor="#97a2ae"
         android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -117,12 +115,12 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/useremail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="fathy.shawat@gmail.com"
                 android:textColor="#31abfd"
                 android:textSize="15sp" />
 
@@ -155,6 +153,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/usernumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
@@ -192,6 +191,7 @@
                 android:textSize="15sp" />
 
             <RatingBar
+                android:id="@+id/userrate"
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

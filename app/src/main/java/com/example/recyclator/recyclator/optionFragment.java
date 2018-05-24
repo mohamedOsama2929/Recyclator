@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.recyclator.recyclator.companyprofile.CompanyProfileActivity;
+import com.example.recyclator.recyclator.userprofile.UserProfileActivity;
+
 
 /**
  * A simple {@link Fragment} subclass.

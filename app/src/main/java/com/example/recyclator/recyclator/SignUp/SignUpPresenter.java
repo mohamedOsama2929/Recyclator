@@ -19,6 +19,13 @@ public class SignUpPresenter implements ISignUpContract.IsignUpPresenter, ISignU
 
     }
 
+    @Override
+    public void onDestroy() {
+        if(mISignUpView !=null){
+            mISignUpView=null;
+        }
+    }
+
 
     @Override
     public void onUserNameError() {
