@@ -8,45 +8,50 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.example.recyclator.recyclator.R;
+import com.example.recyclator.recyclator.R.id;
+import com.example.recyclator.recyclator.R.layout;
+import com.example.recyclator.recyclator.companyprofile.IcompanyprofileContract.IcompanyPresenter;
+import com.example.recyclator.recyclator.companyprofile.IcompanyprofileContract.IcompanyView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CompanyProfileActivity extends AppCompatActivity implements IcompanyprofileContract.IcompanyView {
+public class CompanyProfileActivity extends AppCompatActivity implements IcompanyView {
 
 
-    @BindView(R.id.iv)
+    @BindView(id.iv)
     ImageView imageView;
-    @BindView(R.id.company)
+    @BindView(id.company)
     TextView coName;
-    @BindView(R.id.desc)
+    @BindView(id.desc)
     TextView coDesc;
-    @BindView(R.id.location)
+    @BindView(id.location)
     TextView coLocation;
-    @BindView(R.id.coemail)
+    @BindView(id.coemail)
     TextView coEmail;
-    @BindView(R.id.conumber)
+    @BindView(id.conumber)
     TextView coNumber;
-    @BindView(R.id.rate)
+    @BindView(id.rate)
     RatingBar coRate;
-    @BindView(R.id.paymentmethod)
+    @BindView(id.paymentmethod)
+
+
     TextView copaymentmethod;
 
-    @BindView(R.id.coquantity)
+    @BindView(id.coquantity)
     TextView coQuantity;
 
 
-    IcompanyprofileContract.IcompanyPresenter mcompanyPresenter;
+    IcompanyPresenter mcompanyPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.company_profile);
+        this.setContentView(layout.company_profile);
         ButterKnife.bind(this);
 
-        mcompanyPresenter = new companyprofilePresenter(this);
-        mcompanyPresenter.callprese();
+        this.mcompanyPresenter = new companyprofilePresenter(this);
+        this.mcompanyPresenter.callprese();
 
     }
 
@@ -57,49 +62,49 @@ public class CompanyProfileActivity extends AppCompatActivity implements Icompan
 
     @Override
     public void setcoName(String name) {
-        coName.setText(name);
+        this.coName.setText(name);
 
     }
 
     @Override
     public void setcoDesc(String desc) {
-        coDesc.setText(desc);
+        this.coDesc.setText(desc);
 
     }
 
     @Override
     public void setcoLocation(String location) {
-        coLocation.setText(location);
+        this.coLocation.setText(location);
 
     }
 
     @Override
     public void setcoEmail(String email) {
-        coEmail.setText(email);
+        this.coEmail.setText(email);
 
     }
 
     @Override
     public void setcorNumber(String number) {
-        coNumber.setText(number);
+        this.coNumber.setText(number);
 
     }
 
     @Override
     public void setcoPayment(String payment) {
-        copaymentmethod.setText(payment);
+        this.copaymentmethod.setText(payment);
 
     }
 
     @Override
     public void setcoRate(int rate) {
-        coRate.setRating(rate);
+        this.coRate.setRating(rate);
 
     }
 
     @Override
     public void setcoQuantity(String quantity) {
-        coQuantity.setText(quantity);
+        this.coQuantity.setText(quantity);
 
     }
 }
