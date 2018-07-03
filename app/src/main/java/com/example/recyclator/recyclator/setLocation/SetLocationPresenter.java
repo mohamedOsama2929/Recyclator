@@ -117,7 +117,9 @@ public class SetLocationPresenter implements ISetlocationPresenter
     public void gpsProvided(Context context) {
         if (mSetLocationView != null) {
 
+            /*
             mSetLocationView.hideGPSAlert();
+            */
             mSetLocationView.showPrgrassBar();
             mSetLocationModel.getLocationData(context, this);
         }

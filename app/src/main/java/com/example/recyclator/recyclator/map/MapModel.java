@@ -1,0 +1,141 @@
+package com.example.recyclator.recyclator.map;
+
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+
+import com.akexorcist.googledirection.DirectionCallback;
+import com.akexorcist.googledirection.GoogleDirection;
+import com.akexorcist.googledirection.constant.AvoidType;
+import com.akexorcist.googledirection.model.Direction;
+import com.akexorcist.googledirection.model.Leg;
+import com.example.recyclator.recyclator.R;
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.ArrayList;
+
+
+public class MapModel implements IMapContract.ImapModel {
+
+    static boolean mLocationPermissionGranted;
+    LocationManager locationManager;
+    String provider;
+    Location location;
+
+    @Override
+    public void checkLocationPermission(Context context, IPermissonListner permissonListner) {
+
+        mLocationPermissionGranted = false;
+
+        if (ContextCompat.checkSelfPermission(context,
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            Log.i("locs", "getLocationPermission:  permisssion exist ");
+            mLocationPermissionGranted = true;
+            permissonListner.permissonAccept(context);
+
+        } else {
+            permissonListner.permissionDeny(context);
+        }
+    }
+
+    @Override
+    public void checkGPSEnable(Context context, IGPSListner gpsListner, IDeviceListner deviceListner) {
+
+        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+
+            Log.i("locs", "checkGPSEnable: GPS Provided ");
+            gpsListner.gpsProvided(context);
+            //getDeviceLocation(context,deviceListner); //go to method get location and get the location information
+        } else {
+            Log.i("locs", "checkGPSEnable: GPS Not Provided ");
+            gpsListner.gpsNotPrvided(context);
+        }
+    }
+
+    @Override
+    public void getDeviceLocation(Context context, IDeviceListner deviceListner) {
+
+        if (mLocationPermissionGranted) {
+
+            locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+            provider = locationManager.getBestProvider(new Criteria(), false);
+            Log.i("locs", "provider :" + provider);
+
+            if (ActivityCompat.checkSelfPermission(context,
+                    Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            location = locationManager.getLastKnownLocation(provider);
+            if (location != null) {
+                double lat = location.getLatitude();
+                double lng = location.getLongitude();
+
+                // Add a marker in Sydney and move the camera
+                LatLng myLocation = new LatLng(lat, lng);
+                if (myLocation != null)
+                    deviceListner.successLocation(context, myLocation);
+            }
+
+        }
+
+    }
+
+    @Override
+    public void getDirections(double mylat, double mylng, double targetLat, double targetLng, final Context context
+            , Resources resources, final IDirectionListner directionListner) {
+
+        Log.i("locs", "getDirections: Direction enable");
+        GoogleDirection.withServerKey(resources.getString(R.string.google_maps_key))
+                .from(new LatLng(mylat, mylng))
+                .to(new LatLng(31.0427018, 31.3594343))
+                .avoid(AvoidType.FERRIES)
+                .avoid(AvoidType.HIGHWAYS)
+                .execute(new DirectionCallback() {
+                    @Override
+                    public void onDirectionSuccess(Direction direction, String rawBody) {
+                        if (direction.isOK()) {
+                            // Do something
+                            Log.i("locs", "onDirectionSuccess: success ");
+
+
+                            Leg leg = direction.getRouteList().get(0).getLegList().get(0);
+                            ArrayList<LatLng> directionPositionList = leg.getDirectionPoint();
+                            //return leg to displly it
+                            directionListner.successDirection(context, leg);
+
+
+                        } else {
+                            // Do something
+                            Log.i("locs", "onDirectionSuccess: no ");
+                            directionListner.filureDirection(context);
+                        }
+                    }
+
+                    @Override
+                    public void onDirectionFailure(Throwable t) {
+                        // Do something
+                        Log.i("locs", "onDirectionFailure: ");
+                        directionListner.filureDirection(context);
+
+                    }
+                });
+
+    }
+}

@@ -12,7 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.recyclator.recyclator.companyprofile.CompanyProfileActivity;
-import com.example.recyclator.recyclator.userprofile.UserProfileActivity;
+import com.example.recyclator.recyclator.map.MapsActivity;
+import com.example.recyclator.recyclator.request.RequestActivity;
 
 
 /**

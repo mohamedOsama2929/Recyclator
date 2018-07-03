@@ -1,11 +1,9 @@
 package com.example.recyclator.recyclator.setLocation;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +18,15 @@ import com.example.recyclator.recyclator.MainActivity;
 import com.example.recyclator.recyclator.R;
 import com.example.recyclator.recyclator.setLocation.ISetLocationContract.ISetLocationView;
 import com.example.recyclator.recyclator.setLocation.ISetLocationContract.ISetlocationPresenter;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,8 +44,12 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
     @BindView(R.id.btnShowCompanies)
     Button navBtn;
 
+    /*
     AlertDialog.Builder alertDialogBuilder;
     AlertDialog alertDialog;
+    */
+
+    LocationRequest locationRequest;
 
 
     private ISetlocationPresenter msetlocationPresenter;
@@ -60,6 +71,15 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
     @Override
     public void buildGPSAlert() {
 
+
+        locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(10000);
+        locationRequest.setFastestInterval(5000);
+
+
+
+        /*
          alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Gps is Disabled in your Device would you like to enable Gps?")
                 .setCancelable(false)
@@ -88,20 +108,58 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
             }
         });
         // alertDialog = alertDialogBuilder.create();
+        */
     }
 
     @Override
     public void showGPSAlert() {
 
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest);
+
+        SettingsClient client = LocationServices.getSettingsClient(this);
+        Task<LocationSettingsResponse> task = client.checkLocationSettings(builder.build());
+
+        task.addOnSuccessListener(this, new OnSuccessListener<LocationSettingsResponse>() {
+            @Override
+            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+                // All location settings are satisfied. The client can initialize
+                // location requests here.
+                // ...
+            }
+        });
+
+        task.addOnFailureListener(this, new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                if (e instanceof ResolvableApiException) {
+                    // Location settings are not satisfied, but this can be fixed
+                    // by showing the user a dialog.
+                    try {
+                        // Show the dialog by calling startResolutionForResult(),
+                        // and check the result in onActivityResult().
+                        ResolvableApiException resolvable = (ResolvableApiException) e;
+                        resolvable.startResolutionForResult(SetLocationActivity.this,
+                                1);
+                    } catch (IntentSender.SendIntentException sendEx) {
+                        // Ignore the error.
+                    }
+                }
+            }
+        });
+
+        /*
         //Toast.makeText(this, "make GPS Enabled Please ", Toast.LENGTH_SHORT).show();
         alertDialog = alertDialogBuilder.create();
         if (!alertDialog.isShowing()){
             Log.i("loc", "showGPSAlert: alertDialog.isHidden ");
             alertDialog.show();
         }
+        */
 
     }
 
+    /*
     @Override
     public void hideGPSAlert() {
 
@@ -114,6 +172,7 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
 
 
     }
+    */
 
     @Override
     public void showPermissionDialog() {

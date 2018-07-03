@@ -9,13 +9,6 @@ import android.widget.Toast;
 
 import com.example.recyclator.recyclator.R;
 import com.example.recyclator.recyclator.placepicActvity;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocomplete;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
-import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -97,7 +90,6 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpContract
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         super.onDestroy();
 
         mSignUpPresenter.onDestroy();

@@ -9,9 +9,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.recyclator.recyclator.MapsActivity;
 import com.example.recyclator.recyclator.R;
 import com.example.recyclator.recyclator.SignUp.SignUpActivity;
+import com.example.recyclator.recyclator.map.MapsActivity;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import butterknife.ButterKnife;

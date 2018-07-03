@@ -13,8 +13,11 @@ public interface ISetLocationContract {
 
          void buildGPSAlert();
          void showGPSAlert();
-         void hideGPSAlert();
-         void showPermissionDialog();
+
+        /*
+        void hideGPSAlert();
+        */
+        void showPermissionDialog();
          void showPrgrassBar();
          void hidePrgrassBar();
          void setLocationData(String city,String area);
