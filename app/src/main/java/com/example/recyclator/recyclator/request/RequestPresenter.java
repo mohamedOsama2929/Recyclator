@@ -1,5 +1,6 @@
 package com.example.recyclator.recyclator.request;
 
+import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -21,11 +22,13 @@ public class RequestPresenter implements IRequestContract.IRequestPresenter,IReq
     }
 
     @Override
-    public void getRequests(RecyclerView recyclerView) {
+    public void getRequests(Context context, RecyclerView recyclerView) {
+
+        mIRequestView.showProgress();
 
         if (mIRequestView != null) {
-            mIRequestView.showProgress();
-            result = mIRequestModel.downloadRequests(this);
+
+            result = mIRequestModel.downloadRequests(context,this);
 
             requestAdapter = new RequestAdapter(recyclerView.getContext(), result);
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
@@ -47,6 +50,7 @@ public class RequestPresenter implements IRequestContract.IRequestPresenter,IReq
         if (mIRequestView != null) {
             mIRequestView.hideProgress();
         }
+
     }
 
     @Override

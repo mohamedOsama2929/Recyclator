@@ -53,9 +53,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textVieww">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -184,7 +184,6 @@
                 android:drawableRight="@drawable/locationsignup"
                 android:gravity="center_vertical"
                 android:inputType="text|textEmailAddress"
-                android:onClick="gofrag"
                 android:paddingLeft="2dp"
                 android:paddingRight="2dp"
                 android:textSize="12sp"
@@ -214,7 +213,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtSignup"
                 app:layout_constraintVertical_bias="0.783" />
-        </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
 

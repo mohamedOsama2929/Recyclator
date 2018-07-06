@@ -1,5 +1,6 @@
 package com.example.recyclator.recyclator.request;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -17,7 +18,7 @@ public interface IRequestContract {
 
     interface IRequestPresenter{
 
-        void getRequests(RecyclerView recyclerView);
+        void getRequests(Context context,RecyclerView recyclerView);
         void onDestroy();
     }
 
@@ -29,6 +30,6 @@ public interface IRequestContract {
             void onFailure(String message);
         }
 
-        List<Request> downloadRequests(onRequestFinishedListener listener);
+        List<Request> downloadRequests(Context context, onRequestFinishedListener listener);
     }
 }

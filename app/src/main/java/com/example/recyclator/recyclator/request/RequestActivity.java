@@ -42,7 +42,7 @@ public class RequestActivity extends AppCompatActivity implements IRequestContra
 
         mRequestPresenter = new RequestPresenter(this);
 
-        mRequestPresenter.getRequests(recyclerView);
+        mRequestPresenter.getRequests(this,recyclerView);
 
         /*
         requests = new ArrayList<>();
@@ -59,12 +59,14 @@ public class RequestActivity extends AppCompatActivity implements IRequestContra
 
     @Override
     public void showProgress() {
-        ProgressBarRequest.setVisibility(View.VISIBLE);
+        if (ProgressBarRequest.getVisibility() == View.GONE)
+            ProgressBarRequest.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-        ProgressBarRequest.setVisibility(View.GONE);
+        if (ProgressBarRequest.getVisibility() == View.VISIBLE)
+            ProgressBarRequest.setVisibility(View.GONE);
     }
 
     @Override

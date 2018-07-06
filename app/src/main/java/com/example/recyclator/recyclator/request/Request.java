@@ -7,14 +7,22 @@ public class Request {
     String kind;
     String location;
     String quantity;
-    String rate;
+    double rate;
+    double latitude;
+    double longtude;
+    int user_id;
+    Context context;
 
-    public Request(String name, String location, String kind, String quantity, String rate) {
+    public Request(String name, String location, String kind, String quantity, double rate, double latitude, double longtude , int user_id ,Context context) {
         this.name = name;
         this.kind = kind;
         this.location = location;
         this.quantity = quantity;
         this.rate = rate;
+        this.latitude = latitude;
+        this.longtude = longtude;
+        this.user_id = user_id;
+        this.context = context;
     }
 
     public String getName() {
@@ -49,14 +57,45 @@ public class Request {
         this.quantity = quantity;
     }
 
-    public String getRate() {
+    public double getRate() {
         return rate;
     }
 
-    public void setRate(String rate) {
+    public void setRate(double rate) {
         this.rate = rate;
     }
 
+    public double getLatitude() {
+        return this.latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongtude() {
+        return this.longtude;
+    }
+
+    public void setLongtude(double longtude) {
+        this.longtude = longtude;
+    }
+
+    public int getUser_id() {
+        return this.user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public Context getContext() {
+        return this.context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
 }
 
 

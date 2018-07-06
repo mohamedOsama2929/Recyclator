@@ -8,6 +8,15 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
+    <ProgressBar
+        android:id="@+id/progressBarRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="168dp"
+        tools:layout_editor_absoluteY="259dp" />
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
@@ -44,14 +53,5 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar2">
 
     </android.support.v7.widget.RecyclerView>
-
-    <ProgressBar
-        android:id="@+id/progressBarRequest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="259dp" />
 
 </android.support.constraint.ConstraintLayout>
