@@ -1,13 +1,10 @@
-package com.example.recyclator.recyclator.signIn;
+package com.example.recyclator.recyclator.UserSignIn;
 
 import android.content.Context;
 
-/**
- * Created by amr on 3/26/18.
- */
+import com.example.recyclator.recyclator.signIn.ISignInContract;
 
-public interface ISignInContract {
-
+public interface IUserSignIn {
     interface ISignInView{
 
         void showProgress();
@@ -16,28 +13,30 @@ public interface ISignInContract {
         void setPasswordError();
         void navigateToMatin();
         void showAlert(String message);
-        void setId(String company_id);
+        void setUserId(String user_id);
     }
 
     interface ISignInPresenter{
 
-        void validateCred(Context context,String username, String password);
+        void validateCred(Context context, String username, String password);
         void onDestroy();
 
     }
 
     interface ISignModel{
 
-        interface onLoginFinishedListener{
+        void login(Context context, String username, String password, IUserSignIn.ISignModel.onUserLoginFinishedListener listener);
+
+
+        interface onUserLoginFinishedListener{
 
             void onUserNameError();
             void onPasswordError();
+            void onUsergetId(String id);
             void onSuccess();
-            void onidrequst(String company_id);
             void onFailure(String message);
         }
 
-        void login(Context context, String username, String password, onLoginFinishedListener listener);
 
     }
 }

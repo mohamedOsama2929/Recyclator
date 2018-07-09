@@ -51,7 +51,8 @@ public class CompanyProfileActivity extends AppCompatActivity implements Icompan
         ButterKnife.bind(this);
 
         this.mcompanyPresenter = new companyprofilePresenter(this);
-        this.mcompanyPresenter.callprese();
+        String s = getIntent().getStringExtra("EXTRA_SESSION_ID");
+        mcompanyPresenter.callprese(this,s);
 
     }
 
@@ -99,7 +100,6 @@ public class CompanyProfileActivity extends AppCompatActivity implements Icompan
     @Override
     public void setcoRate(int rate) {
         this.coRate.setRating(rate);
-
     }
 
     @Override

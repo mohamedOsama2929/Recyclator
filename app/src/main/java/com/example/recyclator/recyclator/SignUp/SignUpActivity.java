@@ -29,18 +29,18 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpContract
 
         mSignUpPresenter = new SignUpPresenter(this);
 
-        txtCompanyNameEdit = (EditText) findViewById(R.id.txtMailEdit);
-        txtPasswordEdit = (EditText) findViewById(R.id.txtPasswordEdit);
+        txtCompanyNameEdit = (EditText) findViewById(R.id.txtUserMailEdit);
+        txtPasswordEdit = (EditText) findViewById(R.id.txtUserPasswordEdit);
         txtMailEdit = (EditText) findViewById(R.id.txtSignin);
         txtPhoneNumberEdit = (EditText) findViewById(R.id.txtHaveAccount);
         txtLocationEdit = (EditText) findViewById(R.id.txtSignup);
 
-        btnSignUp = (Button) findViewById(R.id.btnSignin);
+        btnSignUp = (Button) findViewById(R.id.btnSignup);
     }
 
-    @OnClick(R.id.btnSignin)
+    @OnClick(R.id.btnSignup)
     void gotoMap() {
-        mSignUpPresenter.validateCred(txtCompanyNameEdit.getText().toString().trim(),
+        mSignUpPresenter.validateCred(this,txtCompanyNameEdit.getText().toString().trim(),
                 txtPasswordEdit.getText().toString().trim(), txtMailEdit.getText().toString().trim(),
                 txtPhoneNumberEdit.getText().toString().trim(), txtLocationEdit.getText().toString().trim());
 

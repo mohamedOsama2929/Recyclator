@@ -1,19 +1,14 @@
-package com.example.recyclator.recyclator.signIn;
+package com.example.recyclator.recyclator.UserSignIn;
 
 import android.content.Context;
 
-/**
- * Created by amr on 3/26/18.
- */
+public class UserSignInPresenter implements IUserSignIn.ISignInPresenter,IUserSignIn.ISignModel.onUserLoginFinishedListener {
+    IUserSignIn.ISignInView mISignInView;
+    IUserSignIn.ISignModel mISignInModel;
 
-public class SignInPresenter implements ISignInContract.ISignInPresenter, ISignInContract.ISignModel.onLoginFinishedListener {
-
-    ISignInContract.ISignInView mISignInView;
-    ISignInContract.ISignModel mISignInModel;
-
-    public SignInPresenter(ISignInContract.ISignInView mISignInView){
+    public UserSignInPresenter(IUserSignIn.ISignInView mISignInView){
         this.mISignInView = mISignInView;
-        mISignInModel = new SignInModel();
+        mISignInModel = new UserSignInModel();
     }
 
     @Override
@@ -21,7 +16,7 @@ public class SignInPresenter implements ISignInContract.ISignInPresenter, ISignI
 
         if (mISignInView != null) {
             mISignInView.showProgress();
-            mISignInModel.login(context,username, password, this);
+            mISignInModel.login(context,username, password,this);
         }
     }
 
@@ -53,18 +48,17 @@ public class SignInPresenter implements ISignInContract.ISignInPresenter, ISignI
     }
 
     @Override
+    public void onUsergetId(String id) {
+        if (mISignInView != null) {
+            mISignInView.setUserId(id);
+        }
+        }
+
+    @Override
     public void onSuccess() {
 
         if (mISignInView != null) {
             mISignInView.hideProgress();
-            mISignInView.navigateToMatin();
-        }
-    }
-
-    @Override
-    public void onidrequst(String company_id) {
-        if (mISignInView != null) {
-            mISignInView.setId(company_id);
             mISignInView.navigateToMatin();
         }
     }

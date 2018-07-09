@@ -1,4 +1,4 @@
-package com.example.recyclator.recyclator.SignUp;
+package com.example.recyclator.recyclator.SignUpUser;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -9,26 +9,21 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.JsonObject;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by dewidar on 3/26/18.
- */
+public class SignupUserModel implements ISignUpUserContract.IsignUpUserModel {
 
-public class SignUpModel implements ISignUpContract.IsignUpModel {
-
-    String url="https://desolate-chamber-62168.herokuapp.com/public/company/signup";
+    String url = "https://desolate-chamber-62168.herokuapp.com/public/signup";
 
     @Override
-    public void Signup(Context context, final String username, final String password, final String email, final String phone, final String location, final onSignupFinishedListener listener) {
+    public void Signup(Context context, String username, String lastName, String password, String email, String phone, final onSignupUserFinishedListener listener) {
 
         if (TextUtils.isEmpty(username)) {
             listener.onUserNameError();
@@ -42,21 +37,21 @@ public class SignUpModel implements ISignUpContract.IsignUpModel {
         } else if (TextUtils.isEmpty(phone)) {
             listener.onPhoneError();
             return;
-        } else if (TextUtils.isEmpty(location)) {
-            listener.onLocationError();
+        } else if (TextUtils.isEmpty(lastName)) {
+            listener.onUserLastNameError();
             return;
-        } else if(username != null   && password !=null && email !=null && phone !=null && location !=null) {
+        } else if (username != null && password != null && email != null && phone != null && lastName != null) {
+
             Map<String, String> params = new HashMap();
 
 
-            params.put("Name", username);
-            params.put("Bio", "biobb");
+            params.put("FirstName", username);
+            params.put("LastName", lastName);
             params.put("Email", email);
             params.put("Phone", phone);
             params.put("Password", password);
             params.put("Image", "k.jpg");
             params.put("district", "mahalla");
-            params.put("LocationTarget", location);
 
             JSONObject parameters = new JSONObject(params);
 
@@ -79,10 +74,9 @@ public class SignUpModel implements ISignUpContract.IsignUpModel {
             });
 
             Volley.newRequestQueue(context).add(jsonRequest);
-        }
-        else {
+
+        } else {
             listener.onFailure("invalid credentials!");
         }
-
     }
 }

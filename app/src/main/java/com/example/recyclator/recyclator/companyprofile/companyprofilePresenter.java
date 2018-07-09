@@ -1,5 +1,6 @@
 package com.example.recyclator.recyclator.companyprofile;
 
+import android.content.Context;
 import android.net.Uri;
 
 import com.example.recyclator.recyclator.companyprofile.IcompanyprofileContract.IcompanyView;
@@ -16,8 +17,8 @@ public class companyprofilePresenter implements IcompanyprofileContract.Icompany
 
     @Override
 
-    public void callprese() {
-        mcompanyModel.downloadinfo(this);
+    public void callprese(Context context,String id_company) {
+        mcompanyModel.downloadinfo(context,id_company,this);
 
     }
 

@@ -1,5 +1,7 @@
 package com.example.recyclator.recyclator.SignUp;
 
+import android.content.Context;
+
 /**
  * Created by dewidar on 3/26/18.
  */
@@ -24,13 +26,13 @@ public interface ISignUpContract {
     }
 
     interface IsignUpPresenter {
-        void validateCred(String username, String password, String email, String phone, String location);
+        void validateCred(Context context, String username, String password, String email, String phone, String location);
         void onDestroy();
 
     }
 
     interface IsignUpModel {
-        void Signup(String username, String password, String email, String phone, String location, onSignupFinishedListener listener);
+        void Signup(Context context,String username, String password, String email, String phone, String location, onSignupFinishedListener listener);
 
         interface onSignupFinishedListener {
 

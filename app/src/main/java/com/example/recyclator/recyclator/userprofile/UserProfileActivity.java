@@ -39,7 +39,9 @@ public class UserProfileActivity extends AppCompatActivity implements Iuserprofi
         userNumber=(TextView) findViewById(R.id.usernumber);
         userRating=(RatingBar) findViewById(R.id.userrate);
 
-muserprofilePresente.callprese();
+        String s = getIntent().getStringExtra("EXTRA_SESSION_ID");
+
+        muserprofilePresente.callprese(this,s);
 
     }
 

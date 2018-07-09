@@ -1,5 +1,6 @@
 package com.example.recyclator.recyclator.userprofile;
 
+import android.content.Context;
 import android.media.Image;
 import android.net.Uri;
 
@@ -18,8 +19,8 @@ public class userproflePresenter implements IuserprofileContract.IuserprofilePre
     }
 
     @Override
-    public void callprese() {
-        muserprofilemodel.downloadnameema(this);
+    public void callprese(Context context,String user_id) {
+        muserprofilemodel.downloadnameema(context,user_id,this);
     }
 
     @Override

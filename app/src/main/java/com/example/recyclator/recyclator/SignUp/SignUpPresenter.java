@@ -1,5 +1,7 @@
 package com.example.recyclator.recyclator.SignUp;
 
+import android.content.Context;
+
 /**
  * Created by dewidar on 3/26/18.
  */
@@ -14,8 +16,8 @@ public class SignUpPresenter implements ISignUpContract.IsignUpPresenter, ISignU
     }
 
     @Override
-    public void validateCred(String username, String password, String email, String phone, String location) {
-        mISignUpModel.Signup(username, password, email, phone, location, this);
+    public void validateCred(Context context, String username, String password, String email, String phone, String location) {
+        mISignUpModel.Signup(context,username, password, email, phone, location, this);
 
     }
 

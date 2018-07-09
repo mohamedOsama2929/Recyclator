@@ -1,4 +1,4 @@
-package com.example.recyclator.recyclator.SignUp;
+package com.example.recyclator.recyclator.UserSignIn;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -9,54 +9,39 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.recyclator.recyclator.signIn.ISignInContract;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-/**
- * Created by dewidar on 3/26/18.
- */
+public class UserSignInModel implements IUserSignIn.ISignModel {
+    String url = "https://desolate-chamber-62168.herokuapp.com/public/signin";
 
-public class SignUpModel implements ISignUpContract.IsignUpModel {
-
-    String url="https://desolate-chamber-62168.herokuapp.com/public/company/signup";
 
     @Override
-    public void Signup(Context context, final String username, final String password, final String email, final String phone, final String location, final onSignupFinishedListener listener) {
-
+    public void login(Context context, final String username, final String password, final onUserLoginFinishedListener listener) {
         if (TextUtils.isEmpty(username)) {
             listener.onUserNameError();
             return;
         } else if (TextUtils.isEmpty(password)) {
             listener.onPasswordError();
             return;
-        } else if (TextUtils.isEmpty(email)) {
-            listener.onEmailError();
-            return;
-        } else if (TextUtils.isEmpty(phone)) {
-            listener.onPhoneError();
-            return;
-        } else if (TextUtils.isEmpty(location)) {
-            listener.onLocationError();
-            return;
-        } else if(username != null   && password !=null && email !=null && phone !=null && location !=null) {
+        }
+        else if(username !=null && password !=null) {
+
             Map<String, String> params = new HashMap();
-
-
-            params.put("Name", username);
-            params.put("Bio", "biobb");
-            params.put("Email", email);
-            params.put("Phone", phone);
+            params.put("Email", username);
             params.put("Password", password);
-            params.put("Image", "k.jpg");
-            params.put("district", "mahalla");
-            params.put("LocationTarget", location);
+
 
             JSONObject parameters = new JSONObject(params);
 
@@ -64,8 +49,12 @@ public class SignUpModel implements ISignUpContract.IsignUpModel {
                 @Override
                 public void onResponse(JSONObject response) {
 
-                    Log.i("Post Response", "onResponse: " + response.toString());
 
+                    String jsonObject = response.optString("id").toString();
+                    Log.i("Post Response", "onResponse: " + jsonObject + response.toString());
+                    listener.onUsergetId(jsonObject);
+
+                    //Iterate the jsonArray and print the info of JSONObjects
                     listener.onSuccess();
                     //TODO: handle success
                 }
@@ -79,10 +68,10 @@ public class SignUpModel implements ISignUpContract.IsignUpModel {
             });
 
             Volley.newRequestQueue(context).add(jsonRequest);
+        }else {
+            listener.onFailure("invalid cradintls");
         }
-        else {
-            listener.onFailure("invalid credentials!");
-        }
-
     }
 }
+
+

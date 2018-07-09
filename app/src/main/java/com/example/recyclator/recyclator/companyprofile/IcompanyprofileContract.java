@@ -1,5 +1,6 @@
 package com.example.recyclator.recyclator.companyprofile;
 
+import android.content.Context;
 import android.net.Uri;
 
 public interface IcompanyprofileContract {
@@ -27,7 +28,7 @@ public interface IcompanyprofileContract {
     }
 
     interface IcompanyPresenter {
-        void callprese();
+        void callprese(Context context,String id_company);
 
         void onDestroy();
 
@@ -36,7 +37,7 @@ public interface IcompanyprofileContract {
 
     interface IcompanyModel {
 
-        void downloadinfo(listner listner);
+        void downloadinfo(Context context, String id_company,listner listner);
 
         interface listner {
             void oncoImagedownload(Uri image);
