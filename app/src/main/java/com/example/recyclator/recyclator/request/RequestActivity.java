@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -44,6 +45,7 @@ public class RequestActivity extends AppCompatActivity implements IRequestContra
 
         mRequestPresenter.getRequests(this,recyclerView);
 
+
         /*
         requests = new ArrayList<>();
 
@@ -59,14 +61,20 @@ public class RequestActivity extends AppCompatActivity implements IRequestContra
 
     @Override
     public void showProgress() {
-        if (ProgressBarRequest.getVisibility() == View.GONE)
-            ProgressBarRequest.setVisibility(View.VISIBLE);
+        if (!ProgressBarRequest.isShown())
+             ProgressBarRequest.setVisibility(View.VISIBLE);
+        Log.i("loc", "showProgress: "+"Show");
+        Toast.makeText(getApplicationContext(),"ProgressPar Show",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void hideProgress() {
-        if (ProgressBarRequest.getVisibility() == View.VISIBLE)
+
+        if (ProgressBarRequest.isShown())
             ProgressBarRequest.setVisibility(View.GONE);
+
+        Log.i("loc", "showProgress: "+"Hide");
+        Toast.makeText(getApplicationContext(),"ProgressPar Hide",Toast.LENGTH_SHORT).show();
     }
 
     @Override

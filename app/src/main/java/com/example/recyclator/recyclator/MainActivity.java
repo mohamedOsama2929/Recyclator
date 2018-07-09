@@ -34,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
                     FragmentManager manager1 = getSupportFragmentManager();
                     manager1.beginTransaction().replace(R.id.content, new HistoryFragment()).commit();
                     return true;
+                case R.id.tips:
+                    switchToFragment3();
+                    FragmentManager manager2 = getSupportFragmentManager();
+                    manager2.beginTransaction().replace(R.id.content, new TipsFragment()).commit();
+                    return true;
             }
             return false;
         }
@@ -67,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
     public void switchToFragment2() {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.content, new HistoryFragment()).commit();
+    }
+
+    public void switchToFragment3() {
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.content, new TipsFragment()).commit();
     }
 
 

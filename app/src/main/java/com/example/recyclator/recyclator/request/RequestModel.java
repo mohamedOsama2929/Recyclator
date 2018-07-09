@@ -60,15 +60,17 @@ public class RequestModel implements IRequestContract.IRequestModel {
 
                                 requests.add(new Request(name, "mahalla" + i,kind,quantity, rate,latitude,longtude,user_id,context));
 
-                                if (requests.size() != 0){
-                                    listener.onSuccess();
-                                    Log.i("Requests ", "downloadRequests: "+requests.size());
-
-                                }
-                                else {
-                                    listener.onFailure("There Are No Requests");
-                                }
                             }
+
+                            if (requests.size() != 0){
+
+                                Log.i("Requests ", "downloadRequests: "+requests.size());
+                                listener.onSuccess();
+                            }
+                            else {
+                                listener.onFailure("There Are No Requests");
+                            }
+
                         }catch (JSONException e){
                             e.printStackTrace();
                         }

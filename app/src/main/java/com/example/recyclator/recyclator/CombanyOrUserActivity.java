@@ -23,7 +23,7 @@ public class CombanyOrUserActivity extends AppCompatActivity {
 
     @OnClick(R.id.userimageButton)
     void goToSetLocationActivity() {
-        Intent intent = new Intent(this, SetLocationActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
