@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.bottom_bar)
     BottomNavigationView navigation;
-    // private RequestQueue requestQueue = Volley.newRequestQueue(this);
-//    int id = intent.getIntExtra("userId",0);
-//    String city = intent.getStringExtra("city");
+    //private RequestQueue requestQueue = Volley.newRequestQueue(this);
+    //int id = intent.getIntExtra("userId",0);
+    //String city = intent.getStringExtra("city");
     Bundle bundle = new Bundle();
     int userState = 0;
     private BottomNavigationView.OnNavigationItemSelectedListener navigation1 = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
         userState = i.getIntExtra("userId", 0); //defult guest \
         Log.i("idddd", "getMyIntent: " + userState);
     }
-
 
     public void switchToFragment1() {
         FragmentManager manager = getSupportFragmentManager();

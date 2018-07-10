@@ -20,9 +20,8 @@ import java.util.Map;
 
 public class RequestModel implements IRequestContract.IRequestModel {
 
-    private ArrayList<Request> requests;
-
     String url = "http://desolate-chamber-62168.herokuapp.com/public/company/requests";
+    private ArrayList<Request> requests;
 
     @Override
     public List<Request> downloadRequests(final Context context, final onRequestFinishedListener listener, int comp_ID) {
@@ -30,7 +29,7 @@ public class RequestModel implements IRequestContract.IRequestModel {
         requests = new ArrayList<>();
 
         Map<String, Integer> params = new HashMap();
-        params.put("id", comp_ID);
+        params.put("id", 1);
 
         JSONArray parameters = null;
         try {
@@ -38,6 +37,8 @@ public class RequestModel implements IRequestContract.IRequestModel {
         } catch (JSONException e) {
 
         }
+
+        //Log.i("loc", "downloadRequests: params "+parameters.toString());
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Method.POST, url, parameters,
                 new Response.Listener<JSONArray>() {

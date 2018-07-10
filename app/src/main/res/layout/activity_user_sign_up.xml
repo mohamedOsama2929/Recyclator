@@ -15,7 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/textVieww"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,7 +31,6 @@
         android:text="Sign Up"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,11 +41,11 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="380dp"
+        android:layout_height="match_parent"
         android:layout_marginBottom="2dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="175dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -56,8 +55,9 @@
 
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/signUpUserContent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
 
             <TextView
@@ -67,18 +67,19 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="6dp"
                 android:text="First Name"
-
                 android:textColor="#e8e8e9"
                 android:textSize="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/txtUserMailEdit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/txtUserMailEdit"
+                app:layout_constraintTop_toTopOf="@+id/signUpUserContent"
                 tools:layout_editor_absoluteY="354dp" />
 
             <EditText
                 android:id="@+id/txtUserMailEdit"
                 android:layout_width="247dp"
-                android:layout_height="37dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="24dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -111,7 +112,7 @@
             <EditText
                 android:id="@+id/txtHaveAccount"
                 android:layout_width="247dp"
-                android:layout_height="37dp"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="2dp"
@@ -138,7 +139,7 @@
             <EditText
                 android:id="@+id/txtUserPasswordEdit"
                 android:layout_width="247dp"
-                android:layout_height="37dp"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
 
@@ -167,7 +168,7 @@
             <EditText
                 android:id="@+id/txtSignup"
                 android:layout_width="247dp"
-                android:layout_height="37dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -197,7 +198,7 @@
             <EditText
                 android:id="@+id/txtSignin"
                 android:layout_width="247dp"
-                android:layout_height="37dp"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="1dp"

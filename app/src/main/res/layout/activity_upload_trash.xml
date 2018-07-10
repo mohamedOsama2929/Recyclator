@@ -17,13 +17,6 @@
         android:minHeight="?attr/actionBarSize"
         app:theme="@style/ToolBarTheme">
 
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:src="@drawable/ic_keyboard_arrow_left_white_48dp" />
-
         <TextView
             android:id="@+id/uploadTrash_title"
             android:layout_width="wrap_content"
@@ -41,8 +34,8 @@
         android:layout_width="96dp"
         android:layout_height="64dp"
         android:layout_marginTop="30dp"
-        android:scaleType="centerCrop"
         android:onClick="uploadImage"
+        android:scaleType="centerCrop"
         android:src="@drawable/upload" />
 
     <TextView
@@ -78,8 +71,8 @@
                 android:id="@+id/quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="5"
                 android:inputType="number"
+                android:text="5"
                 android:theme="@style/ThemeSpinner" />
         </LinearLayout>
 
@@ -125,10 +118,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@drawable/savebutton"
+        android:onClick="sendRequest"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         android:text="send Request"
-        android:onClick="sendRequest"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

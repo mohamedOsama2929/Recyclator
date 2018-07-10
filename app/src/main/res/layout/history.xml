@@ -16,16 +16,6 @@
         android:minHeight="?android:attr/actionBarSize"
         app:theme="@style/ToolBarTheme">
 
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:src="@drawable/b"
-
-            />
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
