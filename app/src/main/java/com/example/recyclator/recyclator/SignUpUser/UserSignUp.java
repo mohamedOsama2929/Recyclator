@@ -1,11 +1,13 @@
 package com.example.recyclator.recyclator.SignUpUser;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.recyclator.recyclator.R;
+import com.example.recyclator.recyclator.UserSignIn.UserSignInActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -75,6 +77,7 @@ public class UserSignUp extends AppCompatActivity implements ISignUpUserContract
 
     @Override
     public void setSucsses() {
+        startActivity(new Intent(getApplicationContext(), UserSignInActivity.class));
 
     }
 

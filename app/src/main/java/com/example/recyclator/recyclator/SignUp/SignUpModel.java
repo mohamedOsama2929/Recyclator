@@ -52,7 +52,7 @@ public class SignUpModel implements ISignUpContract.IsignUpModel {
             params.put("Password", password);
             params.put("Image", "k.jpg");
             params.put("district", "mahalla");
-            params.put("LocationTarget", "mahalla");
+            params.put("LocationTarget", location);
 
             JSONObject param = new JSONObject(params);
 

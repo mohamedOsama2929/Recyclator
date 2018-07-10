@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.recyclator.recyclator.R;
 import com.example.recyclator.recyclator.placepicActvity;
+import com.example.recyclator.recyclator.signIn.SignInActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -89,6 +90,7 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpContract
 
     @Override
     public void setSucsses() {
+        startActivity(new Intent(getApplicationContext(), SignInActivity.class));
 
     }
     @Override

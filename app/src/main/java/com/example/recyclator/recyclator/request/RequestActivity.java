@@ -58,7 +58,6 @@ public class RequestActivity extends AppCompatActivity implements IRequestContra
         if (!ProgressBarRequest.isShown())
              ProgressBarRequest.setVisibility(View.VISIBLE);
         Log.i("loc", "showProgress: "+"Show");
-        Toast.makeText(getApplicationContext(),"ProgressPar Show",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -68,7 +67,6 @@ public class RequestActivity extends AppCompatActivity implements IRequestContra
             ProgressBarRequest.setVisibility(View.GONE);
 
         Log.i("loc", "showProgress: "+"Hide");
-        Toast.makeText(getApplicationContext(),"ProgressPar Hide",Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -67,6 +67,9 @@ public class SignUpPresenter implements ISignUpContract.IsignUpPresenter, ISignU
 
     @Override
     public void onSuccess() {
+        if (mISignUpView != null) {
+            mISignUpView.setSucsses();
+        }
 
     }
 

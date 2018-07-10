@@ -2,8 +2,6 @@ package com.example.recyclator.recyclator.SignUpUser;
 
 import android.content.Context;
 
-import com.example.recyclator.recyclator.signIn.SignInPresenter;
-
 public class SignUPUserPresenter implements ISignUpUserContract.IsignUpUserPresenter , ISignUpUserContract.IsignUpUserModel.onSignupUserFinishedListener {
 
     ISignUpUserContract.IsignUpUserView misignUpUserView;
@@ -69,6 +67,10 @@ public class SignUPUserPresenter implements ISignUpUserContract.IsignUpUserPrese
 
     @Override
     public void onSuccess() {
+        if (misignUpUserView != null) {
+            misignUpUserView.setSucsses();
+        }
+
 
     }
 
