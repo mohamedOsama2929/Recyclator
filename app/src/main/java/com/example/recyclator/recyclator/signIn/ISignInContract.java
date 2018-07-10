@@ -16,7 +16,8 @@ public interface ISignInContract {
         void setPasswordError();
         void navigateToMatin();
         void showAlert(String message);
-        void setId(String company_id);
+
+        void setId(int company_id);
     }
 
     interface ISignInPresenter{
@@ -33,7 +34,8 @@ public interface ISignInContract {
             void onUserNameError();
             void onPasswordError();
             void onSuccess();
-            void onidrequst(String company_id);
+
+            void onidrequst(int company_id);
             void onFailure(String message);
         }
 

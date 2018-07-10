@@ -11,9 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.recyclator.recyclator.companyprofile.CompanyProfileActivity;
-import com.example.recyclator.recyclator.map.MapsActivity;
-import com.example.recyclator.recyclator.request.RequestActivity;
+import com.example.recyclator.recyclator.userprofile.UserProfileActivity;
 
 
 /**
@@ -79,7 +77,7 @@ public class optionFragment extends Fragment {
         // Inflate the layout for this fragment
 
 
-        return inflater.inflate(R.layout.fragment_options_company, container, false);
+        return inflater.inflate(R.layout.fragment_options_user, container, false);
 
 
     }
@@ -88,13 +86,13 @@ public class optionFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final Intent intent = new Intent(getActivity(), CompanyProfileActivity.class);
-        final Intent intent1 = new Intent(getActivity(), RequestActivity.class);
-        final Intent intent2 = new Intent(getActivity(), MapsActivity.class);
+        final Intent intent = new Intent(getActivity(), UserProfileActivity.class);
+        //final Intent intent1 = new Intent(getActivity(), RequestActivity.class);
+        //final Intent intent2 = new Intent(getActivity(), MapsActivity.class);
 
         profileTxt = (TextView) view.findViewById(R.id.profile);
-        reguestTxt = (TextView) view.findViewById(R.id.requests);
-        mapTxt = (TextView) view.findViewById(R.id.map);
+        //reguestTxt = (TextView) view.findViewById(R.id.requests);
+        //mapTxt = (TextView) view.findViewById(R.id.map);
 
         profileTxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +100,7 @@ public class optionFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        /*
         reguestTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,7 +113,7 @@ public class optionFragment extends Fragment {
                 startActivity(intent2);
             }
         });
-
+*/
 
     }
 

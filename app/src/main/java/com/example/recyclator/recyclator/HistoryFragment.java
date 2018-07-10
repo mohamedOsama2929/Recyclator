@@ -10,8 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import com.example.recyclator.recyclator.cotrollers.network_controllers.Service;
+import com.example.recyclator.recyclator.models.History;
+
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HistoryFragment extends android.support.v4.app.Fragment {
 
@@ -25,6 +31,10 @@ public class HistoryFragment extends android.support.v4.app.Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //need the intent ---------------------//////////
+
+    int userId = 3;
 
     private HistoryFragment.OnFragmentInteractionListener mListener;
 
@@ -74,13 +84,25 @@ public class HistoryFragment extends android.support.v4.app.Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.list);
-        histories = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            histories.add(new History(" " + i, " " + i, " " + i, " " + i, ""));
-        }
-        historyAdapter = new HistoryAdapter(getContext(), histories);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(historyAdapter);
+
+        Service.Fetcher.getInstance().getApprovedRequests(userId).enqueue(new Callback<List<History>>() {
+            @Override
+            public void onResponse(Call<List<History>> call, Response<List<History>> response) {
+
+
+                histories = response.body();
+                historyAdapter = new HistoryAdapter(getContext(), histories);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                recyclerView.setAdapter(historyAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<History>> call, Throwable t) {
+
+            }
+        });
+
+
 
 
     }

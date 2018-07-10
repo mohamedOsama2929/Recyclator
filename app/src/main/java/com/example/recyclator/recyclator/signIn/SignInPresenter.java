@@ -1,6 +1,7 @@
 package com.example.recyclator.recyclator.signIn;
 
 import android.content.Context;
+import android.util.Log;
 
 /**
  * Created by amr on 3/26/18.
@@ -62,10 +63,10 @@ public class SignInPresenter implements ISignInContract.ISignInPresenter, ISignI
     }
 
     @Override
-    public void onidrequst(String company_id) {
+    public void onidrequst(int company_id) {
         if (mISignInView != null) {
             mISignInView.setId(company_id);
-            mISignInView.navigateToMatin();
+            Log.i("Post Response", "onidrequst: ID " + company_id);
         }
     }
 

@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
 
-import com.akexorcist.googledirection.model.Leg;
 import com.example.recyclator.recyclator.map.IMapContract.IMapPresenter;
 import com.example.recyclator.recyclator.map.IMapContract.IMapView;
 import com.example.recyclator.recyclator.map.IMapContract.ImapModel;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapPresenter implements IMapPresenter
         , ImapModel.IPermissonListner
@@ -27,26 +27,26 @@ public class MapPresenter implements IMapPresenter
     }
 
     @Override
-    public void requestLocation(Context context, ImapModel.IDeviceListner deviceListner) {
-        mapModel.getDeviceLocation(context, this);
+    public void requestLocation(Context context, ImapModel.IDeviceListner deviceListner, Resources resources) {
+        mapModel.getDeviceLocation(context, this, resources);
     }
 
     @Override
-    public void requestPermission(Context context) {
-        mapModel.checkLocationPermission(context, this);
+    public void requestPermission(Context context, Resources resources) {
+        mapModel.checkLocationPermission(context, this, resources);
     }
 
     @Override
-    public void setPermisionOk(Context context) {
-        mapModel.checkGPSEnable(context, this, this);
+    public void setPermisionOk(Context context, Resources resources) {
+        mapModel.checkGPSEnable(context, this, this, resources);
 
     }
 
     @Override
-    public void requestDirection(double mylat, double mylng, double targetLat, double targetLng, final Context context
+    public void requestDirection(double mylat, double mylng, final Context context
             , Resources resources, final ImapModel.IDirectionListner directionListner) {
 
-        mapModel.getDirections(mylat, mylng, targetLat, targetLng, context, resources, this);
+        mapModel.getDirections(mylat, mylng, context, resources, this);
     }
 
     @Override
@@ -58,20 +58,20 @@ public class MapPresenter implements IMapPresenter
     }
 
     @Override
-    public void permissonAccept(Context context) {
-        mapModel.checkGPSEnable(context, this, this);
+    public void permissonAccept(Context context, Resources resources) {
+        mapModel.checkGPSEnable(context, this, this, resources);
     }
 
     @Override
-    public void permissionDeny(Context context) {
+    public void permissionDeny(Context context, Resources resources) {
 
         mapView.showPermissionDialog();
-        mapModel.checkLocationPermission(context, this);
+        mapModel.checkLocationPermission(context, this, resources);
     }
 
     @Override
-    public void gpsProvided(Context context) {
-        requestLocation(context, this);
+    public void gpsProvided(Context context, Resources resources) {
+        requestLocation(context, this, resources);
         mapView.showLocationButton();
     }
 
@@ -82,10 +82,11 @@ public class MapPresenter implements IMapPresenter
     }
 
     @Override
-    public void successLocation(Context context, LatLng myLocation) {
+    public void successLocation(Context context, LatLng myLocation, Resources resources) {
         mapView.showLocationButton();
         mapView.showLocation(myLocation);
         Log.i("locs", "successLocation: sss ");
+        requestDirection(myLocation.latitude, myLocation.longitude, context, resources, this);
     }
 
     @Override
@@ -94,8 +95,14 @@ public class MapPresenter implements IMapPresenter
     }
 
     @Override
-    public void successDirection(Context context, Leg leg) {
-        mapView.showDirections(leg);
+    public void successDirection(Context context, PolylineOptions polygonOptions) {
+        mapView.showDirections(polygonOptions);
+    }
+
+    @Override
+    public void getdistance(double distance) {
+
+
     }
 
     @Override

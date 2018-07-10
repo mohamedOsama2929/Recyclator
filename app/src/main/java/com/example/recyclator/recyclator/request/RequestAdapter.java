@@ -10,16 +10,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.recyclator.recyclator.R;
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
-
-import com.android.volley.Request.Method;
 
 import org.json.JSONObject;
 
@@ -54,9 +51,6 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
         holder.location.setText(req.get(position).location);
         holder.quantity.setText(req.get(position).quantity);
         holder.rate.setRating((float) req.get(position).rate);
-
-        final double longtude = req.get(position).longtude;
-        final double latitude = req.get(position).latitude;
         final int user_id = req.get(position).user_id;
         final Context context = req.get(position).context;
 
@@ -67,8 +61,6 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
 
                     Map<String, String> params = new HashMap();
                     params.put("id",String.valueOf(user_id));
-                    params.put("width", String.valueOf(longtude));
-                    params.put("height", String.valueOf(latitude));
                     params.put("rate", String.valueOf((float) req.get(position).rate));
 
                     JSONObject parameters = new JSONObject(params);

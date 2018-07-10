@@ -3,7 +3,6 @@ package com.example.recyclator.recyclator.map;
 import android.Manifest;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,8 +11,6 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.akexorcist.googledirection.model.Leg;
-import com.akexorcist.googledirection.util.DirectionConverter;
 import com.example.recyclator.recyclator.R;
 import com.example.recyclator.recyclator.map.IMapContract.IMapPresenter;
 import com.example.recyclator.recyclator.map.IMapContract.IMapView;
@@ -34,11 +31,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
-import java.util.ArrayList;
-
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         , IMapView {
-
 
     static boolean mLocationPermissionGranted;
     Location location;
@@ -53,7 +47,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
 
         mapPresenter = new MapPresenter(this, this);
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -67,11 +60,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Log.i("locs", "mMap ready ");
 
-        mapPresenter.requestPermission(this);
-
+        mapPresenter.requestPermission(this, getResources());
 
     }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -96,7 +87,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // locationManager.removeUpdates(this);
     }
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[],
@@ -106,7 +96,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mapPresenter.requestPermission(this);
+                    mapPresenter.requestPermission(this, getResources());
                 }
             }
         }
@@ -185,11 +175,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(true);
             if (location != null) {
-                mapPresenter.requestDirection(location.getAltitude(), location.getLatitude(), 35656656, 33653553, this, getResources(), (IMapContract.ImapModel.IDirectionListner) this);
-
+                mapPresenter.requestDirection(location.getLatitude(), location.getLongitude(), this, getResources(), (IMapContract.ImapModel.IDirectionListner) this);
             }
-
-
         } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
@@ -215,9 +202,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
-    public void showDirections(Leg leg) {
-        ArrayList<LatLng> directionPositionList = leg.getDirectionPoint();
-        PolylineOptions polygonOptions = DirectionConverter.createPolyline(MapsActivity.this, directionPositionList, 5, Color.RED);
+    public void showDirections(PolylineOptions polygonOptions) {
+
         mMap.addPolyline(polygonOptions);
     }
 

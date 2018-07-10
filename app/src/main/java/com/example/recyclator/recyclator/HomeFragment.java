@@ -4,22 +4,39 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.example.recyclator.recyclator.Companies.Companypresenter;
+import com.example.recyclator.recyclator.Companies.ICompanyContract;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link HomeFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ICompanyContract.ICompanyView {
+
+    //code fathy
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+
+    @BindView(R.id.progressBarCompany)
+    ProgressBar ProgressBarRequest;
+
+    //private RequestQueue requestQueue = Volley.newRequestQueue(this.getContext());
+    String url = "https://desolate-chamber-62168.herokuapp.com/public/search/cairo";
+    private ICompanyContract.ICompanyPresenter mCompanyPresenter;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -66,7 +83,58 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        /*
+        if (getArguments()!=null){
+
+            int id=getArguments().getInt("userId");
+            String city = getArguments().getString("city");
+            if(city == null)
+            {
+                city="cairo";
+            }
+             url ="https://desolate-chamber-62168.herokuapp.com/public/search/"+city;
+            mCompanyPresenter.getCompanies(recyclerView, getContext() , city);
+        }else {
+
+             url ="https://desolate-chamber-62168.herokuapp.com/public/search/cairo";
+            mCompanyPresenter.getCompanies(recyclerView, getContext() , "cairo");
+
+        }
+        */
+
+
         View view = inflater.inflate(R.layout.fragment_list_companies, container, false);
+        ButterKnife.bind(this, view);
+
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mCompanyPresenter = new Companypresenter(this);
+
+
+        if (getArguments() != null) {
+            int id = getArguments().getInt("userId");
+            String city = getArguments().getString("city");
+            if (city == null) {
+                city = "cairo";
+            }
+            url = "https://desolate-chamber-62168.herokuapp.com/public/search/cairo";
+            mCompanyPresenter.getCompanies(recyclerView, getActivity().getApplicationContext(), "cairo");
+
+
+        } else {
+
+            url = "https://desolate-chamber-62168.herokuapp.com/public/search/cairo";
+            mCompanyPresenter.getCompanies(recyclerView, getActivity().getApplicationContext(), "cairo");
+
+
+        }
+
 
         ImageView addRequst = (ImageView) view.findViewById(R.id.addRequst);
         addRequst.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +143,7 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(getActivity(), uploadTrashActivity.class));
             }
         });
-        return view;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -101,18 +169,33 @@ public class HomeFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mCompanyPresenter.onDestroy();
+    }
+
+    @Override
+    public void showProgress() {
+
+        ProgressBarRequest.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+
+        ProgressBarRequest.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showAlert(String message) {
+        StyleableToast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT, R.style.mytoast).show();
+    }
+
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
 }

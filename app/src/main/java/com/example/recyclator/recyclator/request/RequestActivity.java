@@ -1,26 +1,19 @@
 package com.example.recyclator.recyclator.request;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.recyclator.recyclator.R;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Optional;
 
 public class RequestActivity extends AppCompatActivity implements IRequestContract.IRequestView {
 
@@ -41,10 +34,11 @@ public class RequestActivity extends AppCompatActivity implements IRequestContra
         setContentView(R.layout.request);
         ButterKnife.bind(this);
 
+        int comp_ID = getIntent().getIntExtra("EXTRA_SESSION_ID", 0);
+
         mRequestPresenter = new RequestPresenter(this);
 
-        mRequestPresenter.getRequests(this,recyclerView);
-
+        mRequestPresenter.getRequests(this, recyclerView, comp_ID);
 
         /*
         requests = new ArrayList<>();

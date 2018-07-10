@@ -42,6 +42,7 @@
         android:layout_height="64dp"
         android:layout_marginTop="30dp"
         android:scaleType="centerCrop"
+        android:onClick="uploadImage"
         android:src="@drawable/upload" />
 
     <TextView
@@ -67,16 +68,18 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/Quantity"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quantity"
                 android:textColor="#61768c" />
 
             <EditText
+                android:id="@+id/quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="5"
+                android:inputType="number"
                 android:theme="@style/ThemeSpinner" />
         </LinearLayout>
 
@@ -106,12 +109,12 @@
             android:textColor="#61768c" />
 
         <Spinner
+            android:id="@+id/spinner_material"
             style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:drawSelectorOnTop="true"
-            android:entries="@array/array_name"
             android:spinnerMode="dropdown"
             android:theme="@style/ThemeSpinner" />
     </LinearLayout>
@@ -125,6 +128,7 @@
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         android:text="send Request"
+        android:onClick="sendRequest"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

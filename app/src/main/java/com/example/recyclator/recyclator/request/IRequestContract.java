@@ -2,9 +2,7 @@ package com.example.recyclator.recyclator.request;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface IRequestContract {
@@ -18,7 +16,7 @@ public interface IRequestContract {
 
     interface IRequestPresenter{
 
-        void getRequests(Context context,RecyclerView recyclerView);
+        void getRequests(Context context, RecyclerView recyclerView, int comp_ID);
         void onDestroy();
     }
 
@@ -30,6 +28,6 @@ public interface IRequestContract {
             void onFailure(String message);
         }
 
-        List<Request> downloadRequests(Context context, onRequestFinishedListener listener);
+        List<Request> downloadRequests(Context context, onRequestFinishedListener listener, int comp_ID);
     }
 }

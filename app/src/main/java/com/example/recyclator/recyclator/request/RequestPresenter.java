@@ -3,9 +3,7 @@ package com.example.recyclator.recyclator.request;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RequestPresenter implements IRequestContract.IRequestPresenter,IRequestContract.IRequestModel.onRequestFinishedListener {
@@ -22,13 +20,13 @@ public class RequestPresenter implements IRequestContract.IRequestPresenter,IReq
     }
 
     @Override
-    public void getRequests(Context context, RecyclerView recyclerView) {
+    public void getRequests(Context context, RecyclerView recyclerView, int comp_ID) {
 
         mIRequestView.showProgress();
 
         if (mIRequestView != null) {
 
-            result = mIRequestModel.downloadRequests(context,this);
+            result = mIRequestModel.downloadRequests(context, this, comp_ID);
 
             requestAdapter = new RequestAdapter(recyclerView.getContext(), result);
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));

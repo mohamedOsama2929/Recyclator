@@ -17,7 +17,7 @@ public class companyprofilePresenter implements IcompanyprofileContract.Icompany
 
     @Override
 
-    public void callprese(Context context,String id_company) {
+    public void callprese(Context context, int id_company) {
         mcompanyModel.downloadinfo(context,id_company,this);
 
     }

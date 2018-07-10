@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -51,7 +52,8 @@ public class CompanyProfileActivity extends AppCompatActivity implements Icompan
         ButterKnife.bind(this);
 
         this.mcompanyPresenter = new companyprofilePresenter(this);
-        String s = getIntent().getStringExtra("EXTRA_SESSION_ID");
+        int s = getIntent().getIntExtra("EXTRA_SESSION_ID", 0);
+        Log.i("idAPI", "onCreate: value : " + s);
         mcompanyPresenter.callprese(this,s);
 
     }

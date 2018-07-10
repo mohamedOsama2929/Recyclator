@@ -3,35 +3,43 @@ package com.example.recyclator.recyclator.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.android.volley.RequestQueue;
+import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-
-import com.android.volley.Request.Method;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RequestModel implements IRequestContract.IRequestModel {
 
     private ArrayList<Request> requests;
 
-    String url = "https://desolate-chamber-62168.herokuapp.com/public/request";
+    String url = "http://desolate-chamber-62168.herokuapp.com/public/company/requests";
 
     @Override
-    public List<Request> downloadRequests(final Context context, final onRequestFinishedListener listener) {
+    public List<Request> downloadRequests(final Context context, final onRequestFinishedListener listener, int comp_ID) {
 
         requests = new ArrayList<>();
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Method.GET, url, null,
+        Map<String, Integer> params = new HashMap();
+        params.put("id", comp_ID);
+
+        JSONArray parameters = null;
+        try {
+            parameters = new JSONArray(params);
+        } catch (JSONException e) {
+
+        }
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Method.POST, url, parameters,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -40,6 +48,7 @@ public class RequestModel implements IRequestContract.IRequestModel {
 
                         try{
                             // Loop through the array elements
+
                             for(int i=0 ;i<response.length() ;i++){
                                 // Get current json object
                                 JSONObject student = response.getJSONObject(i);
@@ -49,16 +58,15 @@ public class RequestModel implements IRequestContract.IRequestModel {
                                 int user_id = student.getInt("User_ID");
                                 String name = student.getString("Name");
                                 String quantity = student.getInt("quantity") + " Kg";
-                                JSONObject users = student.getJSONObject("user");
-                                double longtude = users.getDouble("width");
-                                double latitude = users.getDouble("height");
-                                double rate = users.getDouble("rate");
+                                JSONObject pivot = student.getJSONObject("pivot");
+                                int company_id = pivot.getInt("company_id");
+                                int request_id = pivot.getInt("request_id");
                                 String kind = "Plastic";
 
-                                Log.i("userss", "onResponse: "+users.toString());
+                                Log.i("userss", "onResponse: " + pivot.toString());
                                 //String rate = student.getString("rate");
 
-                                requests.add(new Request(name, "mahalla" + i,kind,quantity, rate,latitude,longtude,user_id,context));
+                                requests.add(new Request(name, "mahalla" + i, kind, quantity, 3, user_id, context));
 
                             }
 

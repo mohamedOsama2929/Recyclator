@@ -19,3 +19,14 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep class com.akexorcist.googledirection.** { *; }
+-keep class com.squareup.okhttp.** { *; }
+-keep interface com.squareup.okhttp.** { *; }
+-keep class retrofit.** { *; }
+-keepclasseswithmembers class * {
+@retrofit.http.* <methods>;
+}
+-dontwarn com.squareup.okhttp.**
+-dontwarn rx.**
+-dontwarn retrofit2.**
+-dontwarn okio.**

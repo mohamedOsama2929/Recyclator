@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.recyclator.recyclator">
 
     <!--
@@ -11,7 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -37,32 +38,28 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".setLocation.SetLocationActivity" />
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
-        -->
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="@string/google_maps_key"
+            tools:replace="android:value" />
 
         <activity
             android:name=".map.MapsActivity"
             android:label="@string/title_activity_maps" />
+        <activity android:name=".Companies.CompanyActivity" />
         <activity
             android:name=".HistoryActivity"
             android:theme="@style/ToolBarTheme" />
         <activity android:name=".request.RequestActivity" />
         <activity android:name=".companyprofile.CompanyProfileActivity" />
-        <activity android:name=".userprofile.UserProfileActivity"></activity>
+        <activity android:name=".userprofile.UserProfileActivity" />
         <activity android:name=".placepicActvity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".uploadTrashActivity" />
         <activity android:name=".SignUpUser.UserSignUp" />
-        <activity android:name=".UserSignIn.UserSignInActivity"></activity>
+        <activity android:name=".UserSignIn.UserSignInActivity" />
+        <activity android:name=".CompanyOptionActivity"></activity>
     </application>
 
 </manifest>

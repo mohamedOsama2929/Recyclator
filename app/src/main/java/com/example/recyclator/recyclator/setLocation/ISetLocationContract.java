@@ -11,6 +11,11 @@ public interface ISetLocationContract {
 
     interface ISetLocationView{
 
+
+        void getMyIntent();
+
+        void sendMyIntent(int userId);
+
          void buildGPSAlert();
          void showGPSAlert();
 

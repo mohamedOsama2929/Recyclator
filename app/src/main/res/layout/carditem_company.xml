@@ -11,11 +11,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/lin"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:id="@+id/company_image"
             android:scaleType="centerCrop" />
 
         <LinearLayout
@@ -28,6 +30,7 @@
             <RatingBar
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
+                android:id="@+id/company_rate"
                 android:layout_height="wrap_content" />
 
             <TextView
@@ -35,22 +38,22 @@
                 android:layout_height="wrap_content"
                 android:text="Egyptian Poilers"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/company_name"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="paper" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="paper" />
+                android:id="@+id/company_loc"
+                android:text="location" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="minimum quantity" />
+                android:id="@+id/bio"
+                android:text="bio" />
+
         </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

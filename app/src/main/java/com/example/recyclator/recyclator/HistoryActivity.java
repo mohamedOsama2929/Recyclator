@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.example.recyclator.recyclator.models.History;
+
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
@@ -20,10 +21,7 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history);
         recyclerView = (RecyclerView) findViewById(R.id.list);
-        histories = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            histories.add(new History(" " + i, " " + i, " " + i, " " + i, ""));
-        }
+
         historyAdapter = new HistoryAdapter(this, histories);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(historyAdapter);

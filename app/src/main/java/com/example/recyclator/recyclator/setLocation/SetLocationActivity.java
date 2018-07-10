@@ -44,13 +44,10 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
     @BindView(R.id.btnShowCompanies)
     Button navBtn;
 
-    /*
-    AlertDialog.Builder alertDialogBuilder;
-    AlertDialog alertDialog;
-    */
 
     LocationRequest locationRequest;
 
+    int userState = 0;
 
     private ISetlocationPresenter msetlocationPresenter;
     @Override
@@ -65,50 +62,37 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
 
         buildGPSAlert();
         // msetlocationPresenter.requestLocationData(this);
+        getMyIntent();
+    }
+
+
+    @Override
+    public void getMyIntent() {
+
+        Intent i = getIntent();
+        userState = i.getIntExtra("userId", 0); //defult guest \
+        if (userState > 0) {
+            //user
+
+        } else {
+
+            //guest
+        }
+
+    }
+
+    @Override
+    public void sendMyIntent(int userId) {
 
     }
 
     @Override
     public void buildGPSAlert() {
 
-
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(10000);
         locationRequest.setFastestInterval(5000);
-
-
-
-        /*
-         alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Gps is Disabled in your Device would you like to enable Gps?")
-                .setCancelable(false)
-                .setPositiveButton("Goto Setting Page To Enable Gps", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //must at presenter
-                        hideGPSAlert();
-                        dialog.cancel();
-                        Intent callGPSSettingIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        startActivity(callGPSSettingIntent);
-
-                      //  msetlocationPresenter.gpsDialogClick(getApplicationContext());
-
-
-                    }
-                });
-        alertDialogBuilder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                dialog.cancel();
-                hideGPSAlert();
-                msetlocationPresenter.gpsDialogCanel(getApplicationContext());
-
-            }
-        });
-        // alertDialog = alertDialogBuilder.create();
-        */
     }
 
     @Override
@@ -147,15 +131,6 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
                 }
             }
         });
-
-        /*
-        //Toast.makeText(this, "make GPS Enabled Please ", Toast.LENGTH_SHORT).show();
-        alertDialog = alertDialogBuilder.create();
-        if (!alertDialog.isShowing()){
-            Log.i("loc", "showGPSAlert: alertDialog.isHidden ");
-            alertDialog.show();
-        }
-        */
 
     }
 
@@ -230,13 +205,21 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
             txtCity.setText(city);
             txtArea.setText(area);
 
+
     }
 
     @OnClick(R.id.btnShowCompanies)
     @Override
     public void requestNavigateToCompanies() {
 
-        startActivity(new Intent(this, MainActivity.class));
+
+        Intent i = new Intent(this, MainActivity.class);
+        i.putExtra("userId", 5);
+        String city = "cairo";
+        i.putExtra("city", city);
+
+        startActivity(i);
+
     }
 
     @Override

@@ -6,8 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.example.recyclator.recyclator.models.History;
 
 import java.util.List;
 
@@ -30,10 +31,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull HistoryAdapter.ViewHolder holder, int position) {
         History h = hist.get(position);
-       /* holder.date.setText(h.getDate());
-        holder.company.setText(h.getCompany());
-        holder.location.setText(h.getLocation());
-        holder.quantity.setText(h.getQuantity());*/
+        holder.name.setText(h.getName());
+        holder.quantity.setText("quantity is " + h.getQuantity() + "KG");
+        holder.date.setText(h.getCreatedAt());
+        holder.price.setText(h.getSuggetedPrice() + "");
+
 
     }
 
@@ -43,16 +45,16 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView date, company, location, quantity;
-        RatingBar rate;
+        TextView name, quantity, date, price;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
-            date = itemView.findViewById(R.id.date);
-            company = itemView.findViewById(R.id.company);
-            location = itemView.findViewById(R.id.location);
+            name = itemView.findViewById(R.id.name);
             quantity = itemView.findViewById(R.id.quatity);
-            rate = itemView.findViewById(R.id.rate);
+            date = itemView.findViewById(R.id.date);
+            price = itemView.findViewById(R.id.price);
+
         }
     }
 }

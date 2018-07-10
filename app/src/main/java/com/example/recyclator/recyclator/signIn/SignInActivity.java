@@ -3,17 +3,16 @@ package com.example.recyclator.recyclator.signIn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.recyclator.recyclator.CompanyOptionActivity;
 import com.example.recyclator.recyclator.R;
 import com.example.recyclator.recyclator.SignUp.SignUpActivity;
-import com.example.recyclator.recyclator.SignUpUser.UserSignUp;
-import com.example.recyclator.recyclator.companyprofile.CompanyProfileActivity;
-import com.example.recyclator.recyclator.map.MapsActivity;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import butterknife.ButterKnife;
@@ -65,7 +64,8 @@ public class SignInActivity extends AppCompatActivity implements ISignInContract
 
     @Override
     public void navigateToMatin() {
-        startActivity(new Intent(SignInActivity.this,MapsActivity.class));
+
+        //startActivity(new Intent(SignInActivity.this, CompanyOptionActivity.class));
     }
 
     @Override
@@ -74,8 +74,9 @@ public class SignInActivity extends AppCompatActivity implements ISignInContract
     }
 
     @Override
-    public void setId(String company_id) {
-        Intent intent = new Intent(getBaseContext(), CompanyProfileActivity.class);
+    public void setId(int company_id) {
+        Log.i("idfromsignin", String.valueOf(company_id));
+        Intent intent = new Intent(this, CompanyOptionActivity.class);
         intent.putExtra("EXTRA_SESSION_ID", company_id);
         startActivity(intent);
     }

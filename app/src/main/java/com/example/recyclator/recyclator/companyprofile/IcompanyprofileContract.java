@@ -28,7 +28,7 @@ public interface IcompanyprofileContract {
     }
 
     interface IcompanyPresenter {
-        void callprese(Context context,String id_company);
+        void callprese(Context context, int id_company);
 
         void onDestroy();
 
@@ -37,7 +37,7 @@ public interface IcompanyprofileContract {
 
     interface IcompanyModel {
 
-        void downloadinfo(Context context, String id_company,listner listner);
+        void downloadinfo(Context context, int id_company, listner listner);
 
         interface listner {
             void oncoImagedownload(Uri image);
