@@ -25,6 +25,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -205,6 +206,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void showDirections(PolylineOptions polygonOptions) {
 
         mMap.addPolyline(polygonOptions);
+        mMap.addMarker(new MarkerOptions().position(new LatLng(30.98009360000001, 31.169607100000007)));
     }
 
     @Override

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -35,9 +37,9 @@ public class CompanyProfileActivity extends AppCompatActivity implements Icompan
     @BindView(id.rate)
     RatingBar coRate;
     @BindView(id.paymentmethod)
-
-
     TextView copaymentmethod;
+    @BindView(id.requestBtn)
+    Button requestBtn;
 
     @BindView(id.coquantity)
     TextView coQuantity;
@@ -51,9 +53,17 @@ public class CompanyProfileActivity extends AppCompatActivity implements Icompan
         ButterKnife.bind(this);
 
         this.mcompanyPresenter = new companyprofilePresenter(this);
-        int s = getIntent().getIntExtra("EXTRA_SESSION_ID", 0);
-        Log.i("idAPI", "onCreate: value : " + s);
-        mcompanyPresenter.callprese(this,s);
+        int companyId = getIntent().getIntExtra("EXTRA_SESSION_ID", 0);
+        int userId = getIntent().getIntExtra("userId", 0);
+        Log.i("idAPI", "onCreate: value : " + companyId);
+
+        if (userId > 0) {
+            requestBtn.setVisibility(View.VISIBLE);
+        } else {
+            requestBtn.setVisibility(View.GONE);
+        }
+
+        mcompanyPresenter.callprese(this, companyId);
 
         //Button requestBtn = (Button) findViewById(id.requestBtn);
         //requestBtn.bringToFront();
