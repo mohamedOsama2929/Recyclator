@@ -4,15 +4,11 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 
@@ -46,8 +42,8 @@ public class SignUpModel implements ISignUpContract.IsignUpModel {
             listener.onLocationError();
             return;
         } else if(username != null   && password !=null && email !=null && phone !=null && location !=null) {
-            Map<String, String> params = new HashMap();
 
+            Map<String, String> params = new HashMap();
 
             params.put("Name", username);
             params.put("Bio", "biobb");
@@ -56,11 +52,11 @@ public class SignUpModel implements ISignUpContract.IsignUpModel {
             params.put("Password", password);
             params.put("Image", "k.jpg");
             params.put("district", "mahalla");
-            params.put("LocationTarget", location);
+            params.put("LocationTarget", "mahalla");
 
-            JSONObject parameters = new JSONObject(params);
+            JSONObject param = new JSONObject(params);
 
-            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, parameters, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, param, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
 

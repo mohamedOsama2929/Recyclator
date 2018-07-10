@@ -42,7 +42,6 @@ public class CompanyProfileActivity extends AppCompatActivity implements Icompan
     @BindView(id.coquantity)
     TextView coQuantity;
 
-
     IcompanyPresenter mcompanyPresenter;
 
     @Override
@@ -55,6 +54,9 @@ public class CompanyProfileActivity extends AppCompatActivity implements Icompan
         int s = getIntent().getIntExtra("EXTRA_SESSION_ID", 0);
         Log.i("idAPI", "onCreate: value : " + s);
         mcompanyPresenter.callprese(this,s);
+
+        //Button requestBtn = (Button) findViewById(id.requestBtn);
+        //requestBtn.bringToFront();
 
     }
 
