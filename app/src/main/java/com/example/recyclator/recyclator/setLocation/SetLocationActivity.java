@@ -68,17 +68,9 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
 
     @Override
     public void getMyIntent() {
-
         Intent i = getIntent();
         userState = i.getIntExtra("userId", 0); //defult guest \
-        if (userState > 0) {
-            //user
-
-        } else {
-
-            //guest
-        }
-
+        Log.i("idgetusersignin", "getMyIntent: " + userState);
     }
 
     @Override
@@ -211,13 +203,10 @@ public class SetLocationActivity extends AppCompatActivity implements ISetLocati
     @OnClick(R.id.btnShowCompanies)
     @Override
     public void requestNavigateToCompanies() {
-
-
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("userId", 5);
+        i.putExtra("userId", userState);
         String city = "cairo";
         i.putExtra("city", city);
-
         startActivity(i);
 
     }

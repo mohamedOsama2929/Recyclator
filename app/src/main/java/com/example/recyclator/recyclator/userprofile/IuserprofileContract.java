@@ -1,10 +1,7 @@
 package com.example.recyclator.recyclator.userprofile;
 
 import android.content.Context;
-import android.media.Image;
 import android.net.Uri;
-
-import java.net.URI;
 
 public interface IuserprofileContract {
 
@@ -19,13 +16,13 @@ public interface IuserprofileContract {
     }
 
      interface IuserprofilePresente{
-         void callprese(Context context,String user_id);
+         void callprese(Context context, int user_id);
          void onDestroy();
 
      }
 
      interface IuserprofileModel{
-         void downloadnameema(Context context,String user_id, listner listner);
+         void downloadnameema(Context context, int user_id, listner listner);
 
          interface listner{
              void onuserImagedownload(Uri image);

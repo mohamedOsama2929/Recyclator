@@ -1,10 +1,10 @@
 package com.example.recyclator.recyclator.userprofile;
 
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -39,7 +39,8 @@ public class UserProfileActivity extends AppCompatActivity implements Iuserprofi
         userNumber=(TextView) findViewById(R.id.usernumber);
         userRating=(RatingBar) findViewById(R.id.userrate);
 
-        String s = getIntent().getStringExtra("EXTRA_SESSION_ID");
+        int s = getIntent().getIntExtra("userId", 0);
+        Log.i("idfrom", "onCreate: " + s);
 
         muserprofilePresente.callprese(this,s);
 

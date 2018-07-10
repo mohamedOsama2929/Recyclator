@@ -24,13 +24,14 @@ import com.example.recyclator.recyclator.userprofile.UserProfileActivity;
  */
 public class optionFragment extends Fragment {
 
-    TextView profileTxt;
-    TextView reguestTxt;
-    TextView mapTxt;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    TextView profileTxt;
+    TextView reguestTxt;
+    TextView mapTxt;
+    Intent i = new Intent();
 
 
     // TODO: Rename and change types of parameters
@@ -77,6 +78,12 @@ public class optionFragment extends Fragment {
         // Inflate the layout for this fragment
 
 
+        MainActivity activity = (MainActivity) getActivity();
+        int userId = activity.getUserId();
+        i = new Intent(getContext(), UserProfileActivity.class);
+        i.putExtra("userId", userId);
+
+
         return inflater.inflate(R.layout.fragment_options_user, container, false);
 
 
@@ -85,6 +92,13 @@ public class optionFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+/*
+        if (getArguments() != null) {
+            int id = getArguments().getInt("userId");
+             i=new Intent(getContext(),UserProfileActivity.class);
+            i.putExtra("userId",id);
+        }
+        */
 
         final Intent intent = new Intent(getActivity(), UserProfileActivity.class);
         //final Intent intent1 = new Intent(getActivity(), RequestActivity.class);
@@ -97,7 +111,8 @@ public class optionFragment extends Fragment {
         profileTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(intent);
+
+                startActivity(i);
             }
         });
         /*

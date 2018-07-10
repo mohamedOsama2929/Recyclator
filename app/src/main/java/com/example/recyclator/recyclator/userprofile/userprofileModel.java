@@ -3,29 +3,22 @@ package com.example.recyclator.recyclator.userprofile;
 import android.content.Context;
 import android.util.Log;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-
 public class userprofileModel implements IuserprofileContract.IuserprofileModel {
 
 
     String url="https://desolate-chamber-62168.herokuapp.com/public/users";
     @Override
-    public void downloadnameema(Context context, final String user_id , final listner listner) {
+    public void downloadnameema(Context context, final int user_id, final listner listner) {
 
         JsonArrayRequest getRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>()
@@ -43,7 +36,7 @@ public class userprofileModel implements IuserprofileContract.IuserprofileModel 
                                 student = response.getJSONObject(i);
                                 int ids = student.getInt("id");
 
-                                if (ids == Integer.parseInt(user_id)){
+                                if (ids == user_id) {
                                     Log.i("fuck",String.valueOf(i));
                                     JSONObject companyprofile=response.getJSONObject(i);
                                     String companyname=companyprofile.getString("FirstName");

@@ -1,8 +1,8 @@
 package com.example.recyclator.recyclator.UserSignIn;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,11 +12,7 @@ import android.widget.Toast;
 
 import com.example.recyclator.recyclator.R;
 import com.example.recyclator.recyclator.SignUpUser.UserSignUp;
-import com.example.recyclator.recyclator.map.MapsActivity;
-import com.example.recyclator.recyclator.signIn.ISignInContract;
-import com.example.recyclator.recyclator.signIn.SignInActivity;
-import com.example.recyclator.recyclator.signIn.SignInPresenter;
-import com.example.recyclator.recyclator.userprofile.UserProfileActivity;
+import com.example.recyclator.recyclator.setLocation.SetLocationActivity;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import butterknife.ButterKnife;
@@ -64,7 +60,7 @@ public class UserSignInActivity extends AppCompatActivity implements IUserSignIn
 
     @Override
     public void navigateToMatin() {
-        startActivity(new Intent(UserSignInActivity.this,MapsActivity.class));
+        //    startActivity(new Intent(UserSignInActivity.this,SetLocationActivity.class));
     }
 
     @Override
@@ -73,10 +69,10 @@ public class UserSignInActivity extends AppCompatActivity implements IUserSignIn
     }
 
     @Override
-    public void setUserId(String user_id) {
-        Intent intent = new Intent(getBaseContext(), UserProfileActivity.class);
-        intent.putExtra("EXTRA_SESSION_ID", user_id);
-        Log.i("idfrom",user_id);
+    public void setUserId(int user_id) {
+        Intent intent = new Intent(getBaseContext(), SetLocationActivity.class);
+        intent.putExtra("userId", user_id);
+        Log.i("idfromsignin", "id  " + user_id);
         startActivity(intent);
 
     }

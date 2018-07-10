@@ -4,24 +4,16 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.recyclator.recyclator.signIn.ISignInContract;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class UserSignInModel implements IUserSignIn.ISignModel {
     String url = "https://desolate-chamber-62168.herokuapp.com/public/signin";
@@ -51,8 +43,9 @@ public class UserSignInModel implements IUserSignIn.ISignModel {
 
 
                     String jsonObject = response.optString("id").toString();
+                    int t = Integer.parseInt(jsonObject);
                     Log.i("Post Response", "onResponse: " + jsonObject + response.toString());
-                    listener.onUsergetId(jsonObject);
+                    listener.onUsergetId(t);
 
                     //Iterate the jsonArray and print the info of JSONObjects
                     listener.onSuccess();

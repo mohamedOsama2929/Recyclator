@@ -2,8 +2,6 @@ package com.example.recyclator.recyclator.UserSignIn;
 
 import android.content.Context;
 
-import com.example.recyclator.recyclator.signIn.ISignInContract;
-
 public interface IUserSignIn {
     interface ISignInView{
 
@@ -13,7 +11,8 @@ public interface IUserSignIn {
         void setPasswordError();
         void navigateToMatin();
         void showAlert(String message);
-        void setUserId(String user_id);
+
+        void setUserId(int user_id);
     }
 
     interface ISignInPresenter{
@@ -32,7 +31,8 @@ public interface IUserSignIn {
 
             void onUserNameError();
             void onPasswordError();
-            void onUsergetId(String id);
+
+            void onUsergetId(int id);
             void onSuccess();
             void onFailure(String message);
         }

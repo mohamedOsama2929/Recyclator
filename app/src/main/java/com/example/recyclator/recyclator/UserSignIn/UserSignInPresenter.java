@@ -48,7 +48,7 @@ public class UserSignInPresenter implements IUserSignIn.ISignInPresenter,IUserSi
     }
 
     @Override
-    public void onUsergetId(String id) {
+    public void onUsergetId(int id) {
         if (mISignInView != null) {
             mISignInView.setUserId(id);
         }

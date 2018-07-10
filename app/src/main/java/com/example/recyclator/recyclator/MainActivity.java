@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -20,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.bottom_bar)
     BottomNavigationView navigation;
+    // private RequestQueue requestQueue = Volley.newRequestQueue(this);
+//    int id = intent.getIntExtra("userId",0);
+//    String city = intent.getStringExtra("city");
+    Bundle bundle = new Bundle();
+    int userState = 0;
     private BottomNavigationView.OnNavigationItemSelectedListener navigation1 = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -47,13 +53,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
-
-    Intent intent = getIntent();
-
-    // private RequestQueue requestQueue = Volley.newRequestQueue(this);
-//    int id = intent.getIntExtra("userId",0);
-//    String city = intent.getStringExtra("city");
-    Bundle bundle = new Bundle();
     //code fathy
     private String url = "https://desolate-chamber-62168.herokuapp.com/public/search";
     private ICompanyContract.ICompanyPresenter mCompanyPresenter;
@@ -65,16 +64,37 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         t2 = (TextView) findViewById(R.id.addrec);
-        bundle.putInt("userId", 5);
+        getMyIntent();
+
+        userState = getIntent().getIntExtra("userId", 0);
+        bundle.putInt("userId", userState);
+        Log.i("idfrom", "onCreate: " + userState);
         bundle.putString("city", "cairo");
         // set Fragmentclass Arguments
         HomeFragment homeFragment = new HomeFragment();
+        optionFragment optionFragment = new optionFragment();
+        optionFragment.setArguments(bundle);
         homeFragment.setArguments(bundle);
+
 
         navigation.setOnNavigationItemSelectedListener(navigation1);
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.content, homeFragment).commit();
+        //manager.beginTransaction().replace(R.id.content,optionFragment).commit();
+
     }
+
+    public int getUserId() {
+        return userState;
+    }
+
+    public void getMyIntent() {
+
+        Intent i = getIntent();
+        userState = i.getIntExtra("userId", 0); //defult guest \
+        Log.i("idddd", "getMyIntent: " + userState);
+    }
+
 
     public void switchToFragment1() {
         FragmentManager manager = getSupportFragmentManager();
