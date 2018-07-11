@@ -91,9 +91,9 @@ public class companyprofileModel implements IcompanyprofileContract.IcompanyMode
         Volley.newRequestQueue(context).add(jsonObjectRequest);
 */
 
-        listner.oncoDescdownloaded("company desc");
+        listner.oncoDescdownloaded("Collect Glass Garbage in tuesday");
 
-        listner.oncoPaymentdownloaded("dewa card");
+        listner.oncoPaymentdownloaded("'Master Card");
         listner.oncoQuantitydownloaded("200 Kg");
         listner.oncoRatedownloaded(5);
 

@@ -103,13 +103,13 @@ public class MapModel implements IMapContract.ImapModel {
     }
 
     @Override
-    public void getDirections(double mylat, double mylng, final Context context
+    public void getDirections(double mylat, double mylng, final double targetLat, final double targetLng, final Context context
             , Resources resources, final IDirectionListner directionListner) {
 
         Log.i("locs", "getDirections: Direction enable");
         GoogleDirection.withServerKey(resources.getString(R.string.google_maps_key))
                 .from(new LatLng(mylat, mylng))
-                .to(new LatLng(30.98009360000001, 31.169607100000007))
+                .to(new LatLng(targetLat, targetLng))
                 .transportMode(TransportMode.DRIVING)
                 .avoid(AvoidType.FERRIES)
                 .avoid(AvoidType.HIGHWAYS)
@@ -131,7 +131,7 @@ public class MapModel implements IMapContract.ImapModel {
                             List<Step> stepList = direction.getRouteList().get(0).getLegList().get(0).getStepList();
                             ArrayList<PolylineOptions> polylineOptionList = DirectionConverter.createTransitPolyline(context, stepList, 5, Color.RED, 3, Color.BLUE);
                             for (PolylineOptions polylineOption : polylineOptionList) {
-                                directionListner.successDirection(context, polylineOption);
+                                directionListner.successDirection(context, polylineOption, targetLat, targetLng);
                             }
 
 

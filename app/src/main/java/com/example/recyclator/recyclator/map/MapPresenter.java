@@ -10,6 +10,9 @@ import com.example.recyclator.recyclator.map.IMapContract.ImapModel;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MapPresenter implements IMapPresenter
         , ImapModel.IPermissonListner
         , ImapModel.IGPSListner
@@ -43,10 +46,10 @@ public class MapPresenter implements IMapPresenter
     }
 
     @Override
-    public void requestDirection(double mylat, double mylng, final Context context
+    public void requestDirection(double mylat, double mylng, double targetLat, double targetLng, final Context context
             , Resources resources, final ImapModel.IDirectionListner directionListner) {
 
-        mapModel.getDirections(mylat, mylng, context, resources, this);
+        mapModel.getDirections(mylat, mylng, targetLat, targetLng, context, resources, this);
     }
 
     @Override
@@ -86,7 +89,18 @@ public class MapPresenter implements IMapPresenter
         mapView.showLocationButton();
         mapView.showLocation(myLocation);
         Log.i("locs", "successLocation: sss ");
-        requestDirection(myLocation.latitude, myLocation.longitude, context, resources, this);
+
+        List<LatLng> userLocations = new ArrayList<LatLng>();
+
+        userLocations.add(new LatLng(31.0423043, 31.351929499999983));//حاسبات و معلومات
+        userLocations.add(new LatLng(30.97849209999999, 31.17318649999993));//شكري القوتلى
+        userLocations.add(new LatLng(30.98009360000001, 31.169607100000007));//محب
+        userLocations.add(new LatLng(30.9690276, 31.168711799999983));//محطة قطار المحلة الكبري
+        userLocations.add(new LatLng(30.9630125, 31.161517600000025));//سكة طنطا
+
+        for (int i = 0; i < userLocations.size() - 1; i++) {
+            requestDirection(userLocations.get(i).latitude, userLocations.get(i).longitude, userLocations.get(i + 1).latitude, userLocations.get(i + 1).longitude, context, resources, this);
+        }
     }
 
     @Override
@@ -95,8 +109,8 @@ public class MapPresenter implements IMapPresenter
     }
 
     @Override
-    public void successDirection(Context context, PolylineOptions polygonOptions) {
-        mapView.showDirections(polygonOptions);
+    public void successDirection(Context context, PolylineOptions polygonOptions, double targetLat, double targetLng) {
+        mapView.showDirections(polygonOptions, targetLat, targetLng);
     }
 
     @Override

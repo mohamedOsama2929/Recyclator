@@ -32,6 +32,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         , IMapView {
 
@@ -176,7 +179,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(true);
             if (location != null) {
-                mapPresenter.requestDirection(location.getLatitude(), location.getLongitude(), this, getResources(), (IMapContract.ImapModel.IDirectionListner) this);
+                List<LatLng> userLocations = new ArrayList<LatLng>();
+
+                userLocations.add(new LatLng(30.97849209999999, 31.17318649999993));//شكري القوتلى
+                userLocations.add(new LatLng(30.98009360000001, 31.169607100000007));//محب
+                userLocations.add(new LatLng(30.9690276, 31.168711799999983));//محطة قطار المحلة الكبري
+                userLocations.add(new LatLng(30.9630125, 31.161517600000025));//سكة طنطا
+                for (int i = 0; i < userLocations.size() - 1; i++) {
+                    mapPresenter.requestDirection(location.getLatitude(), location.getLongitude(), userLocations.get(i).latitude, userLocations.get(i).longitude, this, getResources(), (IMapContract.ImapModel.IDirectionListner) this);
+                }
             }
         } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
@@ -203,10 +214,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
-    public void showDirections(PolylineOptions polygonOptions) {
+    public void showDirections(PolylineOptions polygonOptions, double lat, double lng) {
 
         mMap.addPolyline(polygonOptions);
-        mMap.addMarker(new MarkerOptions().position(new LatLng(30.98009360000001, 31.169607100000007)));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)));
     }
 
     @Override

@@ -18,7 +18,7 @@ public interface IMapContract {
         void showLocationButton();
         void hideLocationButton();
 
-        void showDirections(PolylineOptions polygonOptions);
+        void showDirections(PolylineOptions polygonOptions, double lat, double lng);
         void DirectonError();
         void LocationError();
     }
@@ -31,8 +31,8 @@ public interface IMapContract {
 
         void setPermisionOk(Context context, Resources resources);
 
-        void requestDirection(double mylat, double mylng, final Context context
-                , Resources resources, final ImapModel.IDirectionListner directionListner);
+        void requestDirection(double mylat, double mylng, double targetLat, double targetLng, Context context
+                , Resources resources, ImapModel.IDirectionListner directionListner);
         void onDestroy();
     }
 
@@ -44,7 +44,7 @@ public interface IMapContract {
 
         void getDeviceLocation(Context context, IDeviceListner deviceListner, Resources resources);
 
-        void getDirections(double mylat, double mylng, Context context
+        void getDirections(double mylat, double mylng, double targetLat, double targetLng, Context context
                 , Resources resources, IDirectionListner directionListner);
 
         interface IPermissonListner {
@@ -65,7 +65,7 @@ public interface IMapContract {
         }
         interface IDirectionListner {
 
-            void successDirection(Context context, PolylineOptions polygonOptions);
+            void successDirection(Context context, PolylineOptions polygonOptions, double targetLat, double targetLng);
 
             void getdistance(double distance);
             void filureDirection(Context context);

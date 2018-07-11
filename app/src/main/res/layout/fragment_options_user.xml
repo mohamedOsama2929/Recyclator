@@ -94,40 +94,6 @@
                         android:background="#EFEFF2" />
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:paddingLeft="30dp"
-                    android:paddingTop="17dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/set" />
-
-                    <TextView
-                        android:id="@+id/settings"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="45dp"
-                        android:text="Settings"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="#32509b"
-
-                        />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_below="@+id/settings"
-                        android:layout_marginLeft="45dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginTop="35dp"
-                        android:background="#EFEFF2" />
-                </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
