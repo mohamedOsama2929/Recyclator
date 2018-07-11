@@ -1,5 +1,6 @@
 package com.example.recyclator.recyclator.Companies;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -34,11 +35,13 @@ public class CompaniesAdapter extends RecyclerView.Adapter<CompaniesAdapter.View
         return new CompaniesAdapter.ViewHolder(v);
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Company c = companies.get(position);
         holder.bio.setText(c.getBio());
         holder.location.setText(c.getLocation());
+        //  holder.image.setImageResource(R.id.company_image);
         holder.name.setText(c.getName());
         holder.rate.setRating((float) (c.getRate() / 20.0F));
 

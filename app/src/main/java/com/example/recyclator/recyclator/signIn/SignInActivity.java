@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.recyclator.recyclator.CompanyOptionActivity;
 import com.example.recyclator.recyclator.R;
-import com.example.recyclator.recyclator.SignUp.SignUpActivity;
+import com.example.recyclator.recyclator.placepicActvity;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import butterknife.ButterKnife;
@@ -92,7 +92,7 @@ public class SignInActivity extends AppCompatActivity implements ISignInContract
 
     @OnClick(R.id.txtSignup)
     void goToSignUp() {
-        Intent i = new Intent(getApplicationContext(), SignUpActivity.class);
+        Intent i = new Intent(getApplicationContext(), placepicActvity.class);
         startActivity(i);
     }
 

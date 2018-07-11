@@ -31,7 +31,7 @@
                         android:layout_height="104dp"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/usericon" />
+                        android:src="@drawable/compicon" />
 
                     <TextView
                         android:id="@+id/name"
