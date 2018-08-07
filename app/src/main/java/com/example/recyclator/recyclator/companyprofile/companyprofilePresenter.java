@@ -4,17 +4,18 @@ import android.content.Context;
 import android.net.Uri;
 
 import com.example.recyclator.recyclator.companyprofile.IcompanyprofileContract.IcompanyView;
-
+//implement presenter and lithener of model to excute it's method
 public class companyprofilePresenter implements IcompanyprofileContract.IcompanyPresenter ,IcompanyprofileContract.IcompanyModel.listner {
 
     IcompanyprofileContract.IcompanyModel mcompanyModel;
     IcompanyprofileContract.IcompanyView mcompanyView;
-
+//creat constructor to get the view
     public companyprofilePresenter(IcompanyView mcompanyView) {
         this.mcompanyView = mcompanyView;
         mcompanyModel=new companyprofileModel();
     }
 
+    //method of presenter to get contxt from view and send to model
     @Override
 
     public void callprese(Context context, int id_company) {

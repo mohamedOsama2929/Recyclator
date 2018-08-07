@@ -53,6 +53,7 @@ public class CompanyProfileActivity extends AppCompatActivity implements Icompan
         ButterKnife.bind(this);
 
         this.mcompanyPresenter = new companyprofilePresenter(this);
+        //get company,user ids to work in it. it sended from signup and sign in
         int companyId = getIntent().getIntExtra("EXTRA_SESSION_ID", 0);
         int userId = getIntent().getIntExtra("userId", 0);
         Log.i("idAPI", "onCreate: value : " + companyId);
@@ -63,6 +64,7 @@ public class CompanyProfileActivity extends AppCompatActivity implements Icompan
             requestBtn.setVisibility(View.GONE);
         }
 
+        //call method in presenter sending context,company id with it that later send to model to deal with it
         mcompanyPresenter.callprese(this, companyId);
 
         //Button requestBtn = (Button) findViewById(id.requestBtn);

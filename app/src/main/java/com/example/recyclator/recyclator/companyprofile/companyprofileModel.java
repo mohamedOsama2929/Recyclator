@@ -14,9 +14,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class companyprofileModel implements IcompanyprofileContract.IcompanyModel{
+    //url of api to get info using id
     String url="https://desolate-chamber-62168.herokuapp.com/public/companies";
+    //method to take context from presenter and id and interface listner with method to excute
     @Override
     public void downloadinfo(Context context, final int id_company, final listner listner) {
+
+        //using volley to download info using id
         JsonArrayRequest getRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>()
                 {
@@ -24,17 +28,22 @@ public class companyprofileModel implements IcompanyprofileContract.IcompanyMode
                     public void onResponse(JSONArray response) {
                         // display response
                         Log.i("Response", response.toString());
+                        //take array response and make loop on it  to match diserd id opject and
+                        //get all info fowlloing that id
 
                         for(int i=0;i<response.length();i++){
                             // Get current json object
-
-                            JSONObject student = null;
+                            //loop on opjects elemnts of that array
+                            //in every opject get the id and compare withe or id
+                            //if it match get or info
+                            JSONObject comobject = null;
                             try {
-                                student = response.getJSONObject(i);
-                                int ids = student.getInt("id");
+                                comobject = response.getJSONObject(i);
+                                int ids = comobject.getInt("id");
 
                                 if (ids == id_company) {
-                                    Log.i("fuck",String.valueOf(i));
+                                    Log.i("iii",String.valueOf(i));
+                                    //using object number and get it's element
                                     JSONObject companyprofile=response.getJSONObject(i);
                                     String companyname=companyprofile.getString("Name");
                                     listner.onconamedownload(companyname);
@@ -47,7 +56,7 @@ public class companyprofileModel implements IcompanyprofileContract.IcompanyMode
                                     String companynumber=companyprofile.getString("Email");
                                     String companylocation=companyprofile.getString("LocationTarget");
                                     listner.oncolocationdownloaded(companylocation);
-                                    Log.i("fuck",companyname);
+                                    Log.i("iii",companyname);
 
                                 }
                                 Log.i("ssss",String.valueOf(ids));
