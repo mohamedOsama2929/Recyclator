@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backsetlocation"
+    tools:context="com.example.recyclator.recyclator.MainActivity">
+
+    <TextView
+        android:id="@+id/txtCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="City"
+        android:textColor="#e8e8e9"
+        app:layout_constraintBottom_toTopOf="@+id/txtCityEdit"
+        app:layout_constraintStart_toStartOf="@+id/txtCityEdit" />
+
+    <TextView
+        android:id="@+id/txtCityEdit"
+        android:layout_width="247dp"
+        android:layout_height="37dp"
+        android:drawableBottom="@drawable/bar"
+        android:drawableRight="@drawable/pin"
+        android:fontFamily="@font/roboto"
+        android:gravity="center_vertical"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text="Cairo"
+        android:textColor="#000c44"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtArea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="Area"
+        android:textColor="#e8e8e9"
+        app:layout_constraintBottom_toTopOf="@+id/txtAreaEdit"
+        app:layout_constraintStart_toStartOf="@+id/txtAreaEdit" />
+
+    <TextView
+        android:id="@+id/txtAreaEdit"
+        android:layout_width="247dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
+        android:drawableBottom="@drawable/bar"
+        android:drawableRight="@drawable/pin"
+        android:fontFamily="@font/roboto"
+        android:gravity="center_vertical"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text="6th of October - Hosary and Ahyaa'"
+        android:textColor="#000c44"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCityEdit"
+        app:layout_constraintVertical_bias="0.106" />
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/btnShowCompanies"
+        android:layout_width="245dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/showcompaniesbtn"
+        android:fontFamily="@font/roboto"
+        android:text="Show Companies"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAreaEdit" />
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="118dp"
+        android:layout_height="124dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txtSetLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/roboto"
+        android:text="Set Location"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/btnShowCompanies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAreaEdit" />
+
+</android.support.constraint.ConstraintLayout>

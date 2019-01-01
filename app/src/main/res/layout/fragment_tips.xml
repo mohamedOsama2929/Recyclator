@@ -1,0 +1,192 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.recyclator.recyclator.TipsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/Image1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/recycle2"/>
+
+            <TextView
+                android:id="@+id/Info11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Image1"/>
+
+            <TextView
+                android:id="@+id/Info1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Info11"/>
+
+            <ImageView
+                android:id="@+id/Image2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/Info1"
+                android:src="@drawable/recycle4"/>
+
+            <TextView
+                android:id="@+id/Info12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Image2"/>
+
+            <TextView
+                android:id="@+id/Info2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Info12"/>
+
+            <ImageView
+                android:id="@+id/Image3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/Info2"
+                android:src="@drawable/recycle5"/>
+
+            <TextView
+                android:id="@+id/Info13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Image3"/>
+
+            <TextView
+                android:id="@+id/Info3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Info13"/>
+
+            <ImageView
+                android:id="@+id/Image4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/Info3"
+                android:src="@drawable/recycle6"/>
+
+            <TextView
+                android:id="@+id/Info14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Image4"/>
+
+            <TextView
+                android:id="@+id/Info4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Info14"/>
+
+            <ImageView
+                android:id="@+id/Image5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/Info4"
+                android:src="@drawable/recycle7"/>
+
+            <TextView
+                android:id="@+id/Info15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Image5"/>
+
+            <TextView
+                android:id="@+id/Info5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Info15"/>
+
+            <ImageView
+                android:id="@+id/Image6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/Info5"
+                android:src="@drawable/recycle9"/>
+
+            <TextView
+                android:id="@+id/Info16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Image6"/>
+
+            <TextView
+                android:id="@+id/Info6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Info16"/>
+
+            <ImageView
+                android:id="@+id/Image7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/Info6"
+                android:src="@drawable/recycle10"/>
+
+            <TextView
+                android:id="@+id/Info17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Image7"/>
+
+            <TextView
+                android:id="@+id/Info7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/Info17"/>
+
+            <TextView
+                android:id="@+id/Copyright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Copyright@wikiHow"
+                android:textStyle="bold"
+                android:textColor="@color/fbutton_color_silver"
+                app:layout_constraintTop_toBottomOf="@id/Info7" />
+
+        </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
+
+</FrameLayout>

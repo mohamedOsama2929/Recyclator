@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.example.recyclator.recyclator.uploadTrashActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_trash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2EB1FF"
+        android:elevation="1dp"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ToolBarTheme">
+
+        <TextView
+            android:id="@+id/uploadTrash_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Upload Trash"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+
+            />
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/uploadImage"
+        android:layout_width="96dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="30dp"
+        android:onClick="uploadImage"
+        android:scaleType="centerCrop"
+        android:src="@drawable/upload" />
+
+    <TextView
+        android:id="@+id/textUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:text="Upload Item Picture"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000c44" />
+
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantity"
+                android:textColor="#61768c" />
+
+            <EditText
+                android:id="@+id/quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="5"
+                android:theme="@style/ThemeSpinner" />
+        </LinearLayout>
+
+        <Spinner
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/linear1"
+            android:layout_toRightOf="@+id/linear1"
+            android:drawSelectorOnTop="true"
+            android:entries="@array/array_name"
+            android:spinnerMode="dropdown"
+            android:theme="@style/ThemeSpinner" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Matrial"
+            android:textColor="#61768c" />
+
+        <Spinner
+            android:id="@+id/spinner_material"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:drawSelectorOnTop="true"
+            android:spinnerMode="dropdown"
+            android:theme="@style/ThemeSpinner" />
+    </LinearLayout>
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/sendRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/savebutton"
+        android:onClick="sendRequest"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="send Request"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>
