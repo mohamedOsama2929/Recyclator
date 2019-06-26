@@ -2,7 +2,8 @@ package com.example.recyclator.recyclator;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.recyclator.recyclator.UserSignIn.UserSignInActivity;
 import com.example.recyclator.recyclator.signIn.SignInActivity;

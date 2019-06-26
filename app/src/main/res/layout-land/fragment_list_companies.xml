@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:background="#FAFAFA">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
                 />
 
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
         <RelativeLayout
             android:id="@+id/content"
@@ -76,12 +76,12 @@
             </RelativeLayout>
         </RelativeLayout>
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative"
             android:layout_marginTop="10dp"
-            android:drawSelectorOnTop="true"></android.support.v7.widget.RecyclerView>
+            android:drawSelectorOnTop="true"></androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>
 </FrameLayout>

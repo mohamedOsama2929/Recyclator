@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="com.example.recyclator.recyclator.uploadTrashActivity">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_trash"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
             android:textColor="#ffffff"
 
             />
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <ImageView
         android:id="@+id/uploadImage"

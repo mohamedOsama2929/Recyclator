@@ -20,7 +20,7 @@
         android:layout_gravity="bottom"
         android:background="#ffffff">
 
-        <android.support.design.widget.BottomNavigationView
+        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,6 +28,6 @@
             app:itemBackground="@color/white"
             app:itemIconTint="@drawable/navbottom"
             app:itemTextColor="@drawable/navbottom"
-            app:menu="@menu/menu"></android.support.design.widget.BottomNavigationView>
+            app:menu="@menu/menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
     </RelativeLayout>
 </LinearLayout>
